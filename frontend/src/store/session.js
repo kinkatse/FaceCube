@@ -6,7 +6,7 @@ const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 const setCurrentUser = (user) => {
   return {
     type: SET_CURRENT_USER,
-    payload: user
+    user
   };
 };
 
@@ -52,25 +52,26 @@ export const signup = (user) => async (dispatch) => {
   };
 
 export const login = (user) => async (dispatch) => {
-  const { credential, password } = user;
-  const response = await csrfFetch('/api/session', {
-    method: 'POST',
-    body: JSON.stringify({
-      credential,
-      password
-    })
-  });
-  const data = await response.json();
-  storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
-  return response;
+    const { credential, password } = user;
+    const response = await csrfFetch('/api/session', {
+      method: 'POST',
+      body: JSON.stringify({
+        credential,
+        password
+      })
+    });
+    const data = await response.json();
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user));
+    return response;
 };
 
 export const logout = (userId) => async (dispatch) => {
     const response = await csrfFetch('/api/session', {
       method: 'DELETE'
     });
-    // const data = await response.json();
+    // Don't need data from the response since we only need user
+    // id to delete a user on the frontend which we have here
     storeCurrentUser(null);
     dispatch(removeCurrentUser(userId));
     return response;
@@ -83,7 +84,7 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENT_USER:
-      return { ...state, user: action.payload };
+      return { ...state, user: action.user };
     case REMOVE_CURRENT_USER:
       return { ...state, user: null };
     default:
