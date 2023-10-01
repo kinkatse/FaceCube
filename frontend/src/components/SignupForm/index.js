@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import './LoginForm.css';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import * as sessionActions from "../../store/session";
+import "./SignupForm.css"
 
-function LoginForm() {
+function SignupForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const [credential, setCredential] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.login({ credential, password }))
+    return dispatch(sessionActions.signup({ email, username, password }))
       .catch(async (res) => {
         let data;
         try {
@@ -29,20 +29,29 @@ function LoginForm() {
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
       });
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Login Form</h1>
+      <h1>Sign Up Form</h1>
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
       <label>
-        Username or Email
+        Email
         <input
           type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Username
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
@@ -55,9 +64,9 @@ function LoginForm() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 }
 
-export default LoginForm;
+export default SignupForm;

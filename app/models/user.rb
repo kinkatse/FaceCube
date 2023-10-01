@@ -4,11 +4,11 @@ class User < ApplicationRecord
   validates :username,
     length: { in: 3..30 },
     uniqueness: true,
-    format: { without: URI::MailTo::EMAIL_REGEXP, message: "Cannot be an email" }
+    format: { without: URI::MailTo::EMAIL_REGEXP, message: "cannot be an email" }
   validates :email,
     length: { in: 3..70 },
     uniqueness: true,
-    format: { with: URI::MailTo::EMAIL_REGEXP, message: "Must be in email format" }
+    format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be in email format" }
   validates :session_token,
     uniqueness: true,
     presence: true
