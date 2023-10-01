@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::API
     include ActionController::RequestForgeryProtection
+    rescue_from StandardError, with: :unhandled_error
+    rescue_from ActionController::InvalidAuthenticityToken,
+        with: :invalid_authenticity_token
 
     protect_from_forgery with: :exception
     before_action :snake_case_params
@@ -47,5 +50,22 @@ class ApplicationController < ActionController::API
     def attach_authenticity_token
         headers['X-CSRF-Token'] = masked_authenticity_token(session)
         # headers['X-CSRF-Token'] = form_authenticity_token
+    end
+
+    def invalid_authenticity_token
+        render json: { message: 'Invalid authenticity token' }, 
+          status: :unprocessable_entity
+    end
+    
+    def unhandled_error(error)
+    if request.accepts.first.html?
+        raise error
+    else
+        @message = "#{error.class} - #{error.message}"
+        @stack = Rails::BacktraceCleaner.new.clean(error.backtrace)
+        render 'api/errors/internal_server_error', status: :internal_server_error
+        
+        logger.error "\n#{@message}:\n\t#{@stack.join("\n\t")}\n"
+    end
     end
 end
