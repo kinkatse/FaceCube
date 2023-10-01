@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::API
     include ActionController::RequestForgeryProtection
 
-    # protect_from_forgery with: :exception
+    protect_from_forgery with: :exception
     before_action :snake_case_params
-    # before_action :attach_authenticity_token
+    before_action :attach_authenticity_token
 
     def test
         if params.has_key?(:login)
