@@ -4,14 +4,15 @@ import './Search.css';
 
 const Search = () => {
     const [showSearchIcon, setSearchIcon] = useState(false)
+    const [showSearchBar, setSearchBar] = useState(true)
     
     const submitHandler = (e) => {
         e.preventDefault();
     }
 
     const focusHandler = () => {
-        if (showSearchIcon) return;
         const input = document.getElementsByClassName('search-input')[0]
+        if (showSearchIcon) return;
         input.classList.add("expand-search")
         setSearchIcon(true);
     };
@@ -21,6 +22,41 @@ const Search = () => {
         input.classList.remove("expand-search")
         setSearchIcon(false);
     };
+
+    // const resizeHandler = (e) => {
+    //     const input = document.getElementsByClassName('search-input')[0]
+    //     if (input.offsetWidth <= 52) {
+    //         input.style.visibility = "hidden"
+    //         setSearchBar(false)
+    //     } else {
+    //         input.style.visibility = "visible"
+    //         setSearchBar(true)
+    //     }
+    // }
+
+    let searchButton;
+    if (showSearchBar) {
+        searchButton = (
+          <button className='search-button'>
+            <i className="fa-solid fa-magnifying-glass"/>
+          </button>
+        )
+    } else {
+        searchButton = (
+          <button className='no-bar-search-button'>
+            <i className="fa-solid fa-magnifying-glass"/>
+          </button>
+        )
+    }
+    
+    // useEffect(() => {
+    //     resizeHandler()
+    //     window.addEventListener('resize', resizeHandler)
+
+    //     return () => {
+    //         window.removeEventListener("resize", resizeHandler);
+    //     }
+    // }, [])
     
     useEffect(() => {
         if (!showSearchIcon) return;
@@ -36,9 +72,7 @@ const Search = () => {
         <form onSubmit={submitHandler} className='search-form'>
           {showSearchIcon && <i className="fa-solid fa-magnifying-glass inside-search"/>}
           <input type="text" placeholder="Search" className='search-input' onFocus={focusHandler}/>
-          <button className='search-button'>
-            <i className="fa-solid fa-magnifying-glass"/>
-          </button>
+          {searchButton}
         </form>
     )
 }

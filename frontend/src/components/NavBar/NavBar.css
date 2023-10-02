@@ -9,7 +9,8 @@ nav {
     padding-right: 8px;
     z-index: 10;
     background-color: white;
-    /* border: 2px solid rgba(0, 68, 255, 0.5); */
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+    /* border: 2px solid rgba(0, 0, 0, 0.5); */
 }
 
 .left-nav-bar {
@@ -36,12 +37,12 @@ nav {
 }
 
 .mid-nav-bar {
+    width: 50%;
 }
 
 .right-nav-bar {
     display: flex;
     position: relative;
-    padding-left: 8px;
     padding-right: 8px;
 }
 
