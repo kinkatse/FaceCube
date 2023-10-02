@@ -1,4 +1,4 @@
-.login-whole {
+.signup-whole {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -6,7 +6,7 @@
     padding-top: 16px;
 }
 
-.login-form {
+.signup-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,39 +15,40 @@
     border-bottom: 1px solid rgba(178, 178, 178, 0.5);
 }
 
-.login-form > * {
+.signup-form > * {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.login-form h1 {
+.signup-form h1 {
     font-size: 14px;
     margin-bottom: 0;
 }
 
-.login-errors {
+.signup-errors {
     margin: 5px;
+    font-size: 14px;
     color: rgb(255, 43, 40)
 }
 
-.login-form input {
+.signup-form input {
+    padding: 8px;
+    width: 130%;
     text-align: center;
-    font-size: 16px;
-    padding: 10px;
-    width: 100%;
+    font-size: 12px;
     border: 1px solid rgba(178, 178, 178, 0.5);
     border-radius: 20px;
 }
 
-.login-form input:focus {
+.signup-form input:focus {
     outline: none;
     border: 1px solid rgb(45, 84, 213);
     box-shadow: inset 0 0.3px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.login-button {
+.signup-button {
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 15px;
     width: 170px;
     text-align: center;
@@ -57,12 +58,12 @@
     background-color: rgba(51, 140, 255, 0.8);
 }
 
-.login-button:hover {
+.signup-button:hover {
     opacity: 80%;
     background-color: rgba(51, 140, 255, 0.8);
 }
 
-.other-login-options {
+.other-signup-options {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,24 +72,16 @@
     border-bottom: 1px solid rgba(178, 178, 178, 0.5);
 }
 
-.demo-login {
-    padding: 10px;
-    padding-bottom: 6px;
-    margin-top: 2px;
-    text-align: center;
-    font-size: 14px;
-    border-radius: 25px;
-}
-
-.demo-login:hover {
+.demo-signup:hover {
     background-color: transparent;
 }
 
-.create-button {
+.signin-button {
     padding: 10px;
     width: 300px;
     text-align: center;
     font-weight: bold;
+    margin-top: 8px;
     margin-bottom: 8px;
 }
 

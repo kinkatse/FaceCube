@@ -83,15 +83,17 @@ function LoginForm({ handleOpenModal, handleCloseModal }) {
         <input
           type="password"
           value={password}
-          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
           required
         />
         <button type="submit" className='login-button'>Log In</button>
       </form>
       <section className='other-login-options'>
         <button onClick={handleDemo} className='demo-login'>Demo Login</button>
-        <button onClick={() => handleOpenModal("signup")} className='create-button'>Create an account</button>
+        <button onClick={() => handleOpenModal("signup")} className='create-button'>
+          Create an account
+        </button>
       </section>
       <AboutLinks fromAuth={true}/>
     </div>

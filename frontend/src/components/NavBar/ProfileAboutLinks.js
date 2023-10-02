@@ -1,6 +1,6 @@
 import './ProfileAboutLinks.css'
 
-const AboutLinks = (fromAuth) => {
+const AboutLinks = ({ fromAuth }) => {
   let aboutClass = 'profile-dropdown'
   if (fromAuth) {
     aboutClass = 'auth'
