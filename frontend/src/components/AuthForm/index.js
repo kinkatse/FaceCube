@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './AuthForm.css';
 
-const AuthForm = ({ showMenu, menuButton }) => {
+const AuthForm = () => {
+    const [showMenu, setShowMenu] = useState(false);
+  
+    const menuButton = () => {
+      if (showMenu) setShowMenu(false)
+      else setShowMenu(true)
+    }
     
     return (
         <>

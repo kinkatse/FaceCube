@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
-const ProfileButtons = ({ user, showMenu, menuButton }) => {
+const ProfileButtons = ({ user }) => {
   const dispatch = useDispatch();
+  const [showMenu, setShowMenu] = useState(false);
+  
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
+
+  useEffect(() => {
+    if (!showMenu) return;
+    // Listening for any click on the page, so then it invokes the close Menu function
+    document.addEventListener('click', closeMenu);
+  
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   const logout = (e) => {
     e.preventDefault();
@@ -13,7 +30,7 @@ const ProfileButtons = ({ user, showMenu, menuButton }) => {
 
   return (
     <>
-      <button onClick={menuButton} className="dropdown-button">
+      <button onClick={openMenu} className="dropdown-button">
         <i className="fa-solid fa-user"/>
       </button>
       {showMenu && (
