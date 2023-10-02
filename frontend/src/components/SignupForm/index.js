@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css"
 
-function SignupForm() {
+function SignupForm({ handleOpenModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
@@ -65,6 +65,7 @@ function SignupForm() {
         />
       </label>
       <button type="submit">Sign Up</button>
+      <button onClick={() => handleOpenModal("login")}>Login into an existing account</button>
     </form>
   );
 }

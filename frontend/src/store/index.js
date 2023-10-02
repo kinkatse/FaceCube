@@ -1,10 +1,16 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import modalReducer from './modal';
 import sessionReducer from './session';
 
+const uiReducer = combineReducers({
+    modal: modalReducer
+})
 const rootReducer = combineReducers({
-    session: sessionReducer
+    session: sessionReducer,
+    ui: uiReducer
 });
+
 let enhancer;
 
 if (process.env.NODE_ENV === 'production') {

@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
 import LoginForm from "./components/LoginForm";
+import Modal from './components/Modal';
 import NavBar from './components/NavBar';
 import SignupForm from './components/SignupForm';
 
@@ -7,18 +8,12 @@ const App = () => {
   return (
     <>
       <NavBar/>
+      <Modal />
       <main id='content'>
         <Switch>
           <Route exact path="/">
             <h2>Home Page</h2>
             <h2>Home Page</h2>
-            {/* <h2>Home Page</h2> */}
-          </Route>
-          <Route path="/login">
-            <LoginForm/>
-          </Route>
-          <Route path="/signup">
-            <SignupForm/>
           </Route>
           <Route path="/video/:videoId">
             <h1>Video Show Page</h1>

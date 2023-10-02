@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import * as sessionActions from '../../store/session';
 import './LoginForm.css';
 
-function LoginForm() {
+function LoginForm({ handleOpenModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
@@ -56,6 +56,8 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
+      <button onClick={() => {}}>Demo Login</button>
+      <button onClick={() => handleOpenModal("signup")}>Create an account</button>
     </form>
   );
 }

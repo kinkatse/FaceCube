@@ -4,7 +4,7 @@ import './Search.css';
 
 const Search = () => {
     const [showSearchIcon, setSearchIcon] = useState(false)
-    const [showSearchBar, setSearchBar] = useState(true)
+    // const [showSearchBar, setSearchBar] = useState(true)
     
     const submitHandler = (e) => {
         e.preventDefault();
@@ -35,19 +35,19 @@ const Search = () => {
     // }
 
     let searchButton;
-    if (showSearchBar) {
+    // if (showSearchBar) {
         searchButton = (
           <button className='search-button'>
             <i className="fa-solid fa-magnifying-glass"/>
           </button>
         )
-    } else {
-        searchButton = (
-          <button className='no-bar-search-button'>
-            <i className="fa-solid fa-magnifying-glass"/>
-          </button>
-        )
-    }
+    // } else {
+    //     searchButton = (
+    //       <button className='no-bar-search-button'>
+    //         <i className="fa-solid fa-magnifying-glass"/>
+    //       </button>
+    //     )
+    // }
     
     // useEffect(() => {
     //     resizeHandler()

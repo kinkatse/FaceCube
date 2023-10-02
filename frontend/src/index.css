@@ -51,10 +51,6 @@ table {
 	border-spacing: 0;
 }
 
-/* #root {
-    width: max-content;
-} */
-
 #content {
     position: relative;
     top: 56px;
@@ -62,6 +58,18 @@ table {
 
 #content h2 {
     font-size: 300px;
+}
+
+body::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+    background-color: rgb(228, 228, 228);
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 5px;
 }
 
 button {
