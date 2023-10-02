@@ -30,7 +30,7 @@ const ProfileButtons = ({ user }) => {
 
   let profileHeader = (
     <header className="profile-dropdown-header">
-      <i className="fa-solid fa-user user-pic"/>
+      <i className="fa-solid fa-user user-pic-icon"/>
       <div className="profile-dropdown-details">
         {/* <h1>{user.firstName}</h1> */}
         <h1>Kin Ka Tse</h1>
@@ -42,22 +42,40 @@ const ProfileButtons = ({ user }) => {
   )
 
   let userOptions = (
+    <section className="profile-dropdown-user-options">
+      <NavLink exact to={`/channel/${user.id}`} className="user-options">
+        <i className="fa-regular fa-user channel-icon"/>
+        <h1>Your Channel</h1>
+      </NavLink>
+      <NavLink exact to={`/studio`} className="user-options">
+        <i className="fa-solid fa-cube studio-icon"/>
+        <h1>FaceCube Studio</h1>
+      </NavLink>
+      <button onClick={logout} className="user-options">
+        <i className="fa-solid fa-right-from-bracket signout-icon"/>
+        <h1>Sign Out</h1>
+      </button>
+    </section>
+  )
+
+  let aboutLinks = (
     <section>
-      <NavLink exact to={`/channel/${user.id}`}>Channel</NavLink>
-      <NavLink exact to={`/studio`}>Studio</NavLink>
-      <button onClick={logout}>Sign Out</button>
+      <h1>Github</h1>
+      <h1>LinkedIn</h1>
+      <h1>Portfolio</h1>
     </section>
   )
 
   return (
     <>
       <button onClick={openMenu} className="dropdown-button">
-        <i className="fa-solid fa-user"/>
+        <i className="fa-solid fa-user navbar-user-pic-icon"/>
       </button>
       {showMenu && (
-        <div className="profile-dropdown">
+        <div className="profile-dropdown-whole">
           {profileHeader}
           {userOptions}
+          {aboutLinks}
         </div>
       )}
     </>

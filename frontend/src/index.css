@@ -51,8 +51,28 @@ table {
 	border-spacing: 0;
 }
 
+/* #root {
+    width: max-content;
+} */
+
+#content {
+    position: relative;
+    top: 56px;
+}
+
+#content h2 {
+    font-size: 300px;
+}
+
 button {
+    /* border: 2px solid rgba(113, 113, 113, 0.5); */
+    text-align: left;
+    font-size: 14px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
     background-color: Transparent;
+    cursor: pointer;
 }
 
 button:hover {
