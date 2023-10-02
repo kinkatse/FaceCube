@@ -28,7 +28,7 @@ const ProfileButtons = ({ user }) => {
   return (
     <>
       <button onClick={openMenu} className="dropdown-button">
-        <i className="fa-solid fa-user navbar-user-pic-icon"/>
+        <i className="fa-solid fa-user navbar-user-icon"/>
       </button>
       {showMenu && (
         <div className="profile-dropdown-whole">

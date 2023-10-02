@@ -12,15 +12,16 @@ const AuthForm = () => {
     
     return (
         <>
-            <button onClick={menuButton} className="dropdown-button">
-                <i className="fa-solid fa-user"/>
-            </button>
-            {showMenu && (
-                <ul className="profile-dropdown">
-                    <NavLink to="/login" className="auth-button">Log In</NavLink>
-                    <NavLink to="/signup" className="auth-button">Sign Up</NavLink>
-                </ul>
-            )}
+          <button onClick={menuButton} className="dropdown-button auth-button">
+            <i className="fa-regular fa-circle-user navbar-user-icon"/>
+            <h1>Sign In</h1>
+          </button>
+          {showMenu && (
+            <ul className="profile-dropdown-whole">
+              <NavLink to="/login" className="auth-button">Log In</NavLink>
+              <NavLink to="/signup" className="auth-button">Sign Up</NavLink>
+            </ul>
+          )}
         </>
     )
 }
