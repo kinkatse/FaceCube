@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
+import AboutLinks from '../NavBar/ProfileAboutLinks';
 import './LoginForm.css';
 
-function LoginForm({ handleOpenModal }) {
+function LoginForm({ handleOpenModal, handleCloseModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  const [credentialPlaceholder, setCredentialPlaceHolder] = useState('Email')
 
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
+      .then(handleCloseModal)
       .catch(async (res) => {
         let data;
         try {
@@ -31,34 +33,68 @@ function LoginForm({ handleOpenModal }) {
       });
   }
 
+  const handleDemo = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({
+      credential: "demo@user.io",
+      password: "password"
+    })).then(handleCloseModal)
+  }
+
+  setTimeout(() => {
+    const input = document.getElementById("credential")
+    if (input && credentialPlaceholder === "Email") {
+      setCredentialPlaceHolder("Username")
+      // setTimeout(() => {
+      //   input.classList.remove("credential-email")
+      //   input.classList.add("credential-username")
+      // }, 1000)
+    } else if (input && credentialPlaceholder === "Username") {
+      setCredentialPlaceHolder("Email")
+      // setTimeout(() => {
+      //   input.classList.remove("credential-username")
+      //   input.classList.add("credential-email")
+      // }, 1000)
+    // } else {
+    //   setCredentialPlaceHolder("Email")
+    //   setTimeout(() => {
+    //     input.classList.remove("credential-username")
+    //     input.classList.add("credential-email")
+    //   }, 1000)
+    }
+  }, 2000)
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Login Form</h1>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-      <label>
-        Username or Email
+    <div className='login-whole'>
+      <form onSubmit={handleSubmit} className="login-form">
+        <h1>Please enter your login and password</h1>
+        <ul>
+          {errors.map(error => <li key={error} className="login-errors">{error}</li>)}
+        </ul>
+        {/* <h1 id="credential">{credentialPlaceholder}</h1> */}
         <input
+          id="credential"
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
+          placeholder={credentialPlaceholder}
           required
         />
-      </label>
-      <label>
-        Password
         <input
           type="password"
           value={password}
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Log In</button>
-      <button onClick={() => {}}>Demo Login</button>
-      <button onClick={() => handleOpenModal("signup")}>Create an account</button>
-    </form>
+        <button type="submit" className='login-button'>Log In</button>
+      </form>
+      <section className='other-login-options'>
+        <button onClick={handleDemo} className='demo-login'>Demo Login</button>
+        <button onClick={() => handleOpenModal("signup")} className='create-button'>Create an account</button>
+      </section>
+      <AboutLinks fromAuth={true}/>
+    </div>
   );
 }
 

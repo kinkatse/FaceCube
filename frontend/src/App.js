@@ -1,8 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
-import LoginForm from "./components/LoginForm";
 import Modal from './components/Modal';
 import NavBar from './components/NavBar';
-import SignupForm from './components/SignupForm';
 
 const App = () => {
   return (

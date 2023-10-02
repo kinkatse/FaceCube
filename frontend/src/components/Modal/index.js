@@ -11,35 +11,34 @@ const Modal = () => {
     const handleOpenModal = (modalType) => {
         dispatch(openModal(modalType));
     }
+    const handleCloseModal = () => {
+        dispatch(closeModal());
+    }
 
     let modalComponent;
     let modalHeaderText;
     switch(modal.type) {
       case 'signup':
-        modalHeaderText = <h1>Signup Modal</h1>;
-        modalComponent = <SignupForm handleOpenModal={handleOpenModal}/>;
+        modalHeaderText = 'Sign Up';
+        modalComponent = <SignupForm handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>;
         break;
       case 'login':
-        modalHeaderText = <h1>Login Modal</h1>;
-        modalComponent = <LoginForm handleOpenModal={handleOpenModal}/>;
+        modalHeaderText = 'Login';
+        modalComponent = <LoginForm handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>;
         break;
       default:
         modalComponent = null;
-    }
-
-    const handleClose = () => {
-        dispatch(closeModal());
     }
 
     if (!modalComponent) return null;
 
     return (
       <div className="modal">
-        <div className="modal-background" onClick={handleClose}></div>
+        <div className="modal-background" onClick={handleCloseModal}></div>
         <div className="modal-whole">
           <header className="modal-header">
-            {modalHeaderText}
-            <button onClick={handleClose} className="modal-close">
+            <h1>{modalHeaderText}</h1>
+            <button onClick={handleCloseModal} className="modal-close">
               <i className="fa-solid fa-xmark"/>
             </button>
           </header>

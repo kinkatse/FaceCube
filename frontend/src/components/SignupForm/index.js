@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css"
 
-function SignupForm({ handleOpenModal }) {
+function SignupForm({ handleOpenModal, handleCloseModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
@@ -17,6 +17,7 @@ function SignupForm({ handleOpenModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     return dispatch(sessionActions.signup({ email, username, password }))
+      .then(handleCloseModal)
       .catch(async (res) => {
         let data;
         try {
