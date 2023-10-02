@@ -1,0 +1,46 @@
+.profile-dropdown-user-options {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 300px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(178, 178, 178, 0.5);
+}
+
+.profile-dropdown-user-options > * {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.profile-dropdown-user-options > *:hover {
+    color: black;
+    border-radius: 0;
+    background-color: rgba(170, 170, 170, 0.15);
+}
+
+.navbar-user-pic-icon {
+    font-size: 18px;
+}
+
+.channel.options-icon {
+    font-size: 17px;
+    padding: 0;
+    padding-top: 2px;
+    margin-bottom: 4px;
+    border-top: 2px solid rgb(1, 1, 1);
+    border-left: 2px solid rgb(1, 1, 1);
+    border-right: 2px solid rgb(1, 1, 1);
+    border-radius: 4px;
+    margin-right: 16px;
+}
+
+.options-icon {
+    font-size: 20px;
+    padding-bottom: 2px;
+    margin-right: 16px;
+}

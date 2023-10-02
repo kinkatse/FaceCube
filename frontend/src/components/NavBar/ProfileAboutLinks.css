@@ -1,0 +1,28 @@
+.profile-dropdown-about-links {
+    flex-direction: column;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 300px;
+    font-size: 14px;
+}
+
+.profile-dropdown-about-links > * {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.profile-dropdown-about-links > *:hover {
+    color: black;
+    border-radius: 0;
+    background-color: rgba(170, 170, 170, 0.15);
+}
+
+.link-icon {
+    font-size: 20px;
+    padding-bottom: 2px;
+    margin-right: 16px;
+}
