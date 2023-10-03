@@ -133,7 +133,7 @@ function SignupForm({ handleOpenModal, handleCloseModal }) {
           Login into an existing account
         </button>
       </section>
-      <AboutLinks fromAuth={true}/>
+      <AboutLinks type="fromAuth"/>
     </div>
   );
 }

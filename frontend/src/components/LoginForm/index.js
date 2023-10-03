@@ -95,7 +95,7 @@ function LoginForm({ handleOpenModal, handleCloseModal }) {
           Create an account
         </button>
       </section>
-      <AboutLinks fromAuth={true}/>
+      <AboutLinks type="fromAuth"/>
     </div>
   );
 }
