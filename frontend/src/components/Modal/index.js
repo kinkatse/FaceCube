@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal, openModal } from "../../store/modal";
+import HamburgerMenu from "../HamburgerMenu";
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
 import './Modal.css'
@@ -19,6 +20,11 @@ const Modal = () => {
     let modalComponent;
     let modalHeaderText;
     let modalType = "modal"
+    let iconButton = (
+      <button onClick={handleCloseModal} className="modal-close">
+        <i className="fa-solid fa-xmark"/>
+      </button>
+    )
     switch(modal.type) {
       case 'signup':
         modalHeaderText = 'Sign Up';
@@ -31,7 +37,12 @@ const Modal = () => {
       case 'sidebar':
         modalHeaderText = 'FaceCube';
         modalType = 'sidebar'
-        // modalComponent = <LoginForm handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>;
+        iconButton = (
+          <button onClick={handleCloseModal} className="hamburger-menu">
+            <i className="fa-solid fa-bars"/>
+          </button>
+        )
+        modalComponent = <HamburgerMenu/>;
         break;
       default:
         modalComponent = null;
@@ -56,9 +67,13 @@ const Modal = () => {
             {modalType === "modal" &&
               <>
                 <h1>{modalHeaderText}</h1>
-                <button onClick={handleCloseModal} className="modal-close">
-                    <i className="fa-solid fa-xmark"/>
-                </button>
+                {iconButton}
+              </>
+            }
+            {modalType === "sidebar" &&
+              <>
+                {iconButton}
+                <h1>FaceCube</h1>
               </>
             }
           </header>

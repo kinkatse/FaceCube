@@ -1,17 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButtons from './ProfileButtons';
 import './NavBar.css';
 import Search from '../Search';
 import AuthForm from '../AuthForm';
+import { openModal } from '../../store/modal';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+
+  const handleOpenModal = (modalType) => {
+    dispatch(openModal(modalType));
+  }
   
   let leftNavBar = (
     <section className='left-nav-bar'>
-      <button className="hamburger-menu">
+      <button onClick={() => handleOpenModal("sidebar")} className="hamburger-menu">
         <i className="fa-solid fa-bars"/>
       </button>
       <NavLink exact to="/">Home</NavLink>

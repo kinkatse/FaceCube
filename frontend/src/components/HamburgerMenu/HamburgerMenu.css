@@ -1,0 +1,58 @@
+.sidebar-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 16px;
+    font-size: 22px;
+    border-bottom: 1px solid rgba(178, 178, 178, 0.5);
+}
+
+.sidebar-header h1 {
+    margin-left: 20px;
+}
+
+.hamburger-about-links {
+    flex-direction: column;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 210px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(178, 178, 178, 0.5);
+}
+
+.hamburger-about-links > * {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.hamburger-about-links > *:hover {
+    color: black;
+    border-radius: 10px;
+    background-color: rgba(170, 170, 170, 0.15);
+}
+
+/* .channel.options-icon {
+    font-size: 17px;
+    padding: 0;
+    padding-top: 2px;
+    margin-bottom: 4px;
+    border-top: 2px solid rgb(1, 1, 1);
+    border-left: 2px solid rgb(1, 1, 1);
+    border-right: 2px solid rgb(1, 1, 1);
+    border-radius: 4px;
+    margin-right: 16px;
+} */
+
+.sidebar-icon {
+    height: 35px;
+    width: 35px;
+    font-size: 20px;
+    line-height: 35px;
+    text-align: center;
+    padding-bottom: 2px;
+    margin-right: 16px;
+}

@@ -73,23 +73,30 @@
     font-family: Roboto, Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    position: fixed;
-    /* top: 50%;
-    transform: translate(0%, -50%); */
-    width: 400px;
-    padding: 16px;
-    padding-left: 32px;
-    padding-right: 32px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    /* transform: translate(0%, -50%); */
+    height: 100vw;
+    width: 216px;
+    padding: 12px;
+    padding-top: 8px;
+    /* padding-left: 32px;
+    padding-right: 32px; */
     background: white;
-    border-radius: 7px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    z-index: 15;
 }
 
-.sidebar-header {
+/* .sidebar-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding-bottom: 16px;
     font-size: 22px;
     border-bottom: 1px solid rgba(178, 178, 178, 0.5);
 }
+
+.sidebar-header h1 {
+    margin-left: 20px;
+} */
