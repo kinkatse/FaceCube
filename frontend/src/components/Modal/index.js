@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal, openModal } from "../../store/modal";
 import LoginForm from "../LoginForm";
@@ -9,10 +10,10 @@ const Modal = () => {
     const modal = useSelector((state) => state.ui.modal);
 
     const handleOpenModal = (modalType) => {
-        dispatch(openModal(modalType));
+      dispatch(openModal(modalType));
     }
     const handleCloseModal = () => {
-        dispatch(closeModal());
+      dispatch(closeModal());
     }
 
     let modalComponent;
@@ -29,6 +30,15 @@ const Modal = () => {
       default:
         modalComponent = null;
     }
+    
+    useEffect(() => {
+        if (!modalComponent) return;
+        const body = document.body
+        body.style.overflow = "hidden"
+        return () => {
+            body.style.overflow = ""
+        }
+      }, [modalComponent])
 
     if (!modalComponent) return null;
 
