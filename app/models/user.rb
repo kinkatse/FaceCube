@@ -9,12 +9,10 @@ class User < ApplicationRecord
     length: { in: 3..70 },
     uniqueness: true,
     format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be in email format" }
-  validates :session_token,
-    uniqueness: true,
-    presence: true
-  validates :password,
-    length: { in: 6..70 },
-    allow_nil: true
+  validates :session_token, uniqueness: true, presence: true
+  validates :password, length: { in: 6..70 }, allow_nil: true
+  validates :firstname, length: { in: 3..30 }, presence: true
+  validates :lastname, length: { in: 3..30 }, presence: true
 
   before_validation :ensure_session_token
 

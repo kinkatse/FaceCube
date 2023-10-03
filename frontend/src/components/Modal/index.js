@@ -18,6 +18,7 @@ const Modal = () => {
 
     let modalComponent;
     let modalHeaderText;
+    let modalType = "modal"
     switch(modal.type) {
       case 'signup':
         modalHeaderText = 'Sign Up';
@@ -26,6 +27,11 @@ const Modal = () => {
       case 'login':
         modalHeaderText = 'Login';
         modalComponent = <LoginForm handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>;
+        break;
+      case 'sidebar':
+        modalHeaderText = 'FaceCube';
+        modalType = 'sidebar'
+        // modalComponent = <LoginForm handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>;
         break;
       default:
         modalComponent = null;
@@ -38,19 +44,23 @@ const Modal = () => {
         return () => {
             body.style.overflow = ""
         }
-      }, [modalComponent])
+    }, [modalComponent])
 
     if (!modalComponent) return null;
 
     return (
       <div className="modal">
         <div className="modal-background" onClick={handleCloseModal}></div>
-        <div className="modal-whole">
-          <header className="modal-header">
-            <h1>{modalHeaderText}</h1>
-            <button onClick={handleCloseModal} className="modal-close">
-              <i className="fa-solid fa-xmark"/>
-            </button>
+        <div className={`${modalType}-whole`}>
+          <header className={`${modalType}-header`}>
+            {modalType === "modal" &&
+              <>
+                <h1>{modalHeaderText}</h1>
+                <button onClick={handleCloseModal} className="modal-close">
+                    <i className="fa-solid fa-xmark"/>
+                </button>
+              </>
+            }
           </header>
           {modalComponent}
         </div>

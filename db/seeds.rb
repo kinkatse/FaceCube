@@ -21,7 +21,9 @@ puts "Creating users..."
 User.create!(
     username: 'Demo-lition', 
     email: 'demo@user.io', 
-    password: 'password'
+    password: 'password',
+    firstname: 'Demo',
+    lastname: 'User'
 )
 
 # More users
@@ -29,7 +31,9 @@ User.create!(
     User.create!({
     username: Faker::Internet.unique.username(specifier: 3),
     email: Faker::Internet.unique.email,
-    password: 'password'
+    password: 'password',
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name
     }) 
 end
 

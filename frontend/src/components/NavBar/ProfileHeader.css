@@ -12,7 +12,7 @@
     align-items: center;
     font-size: 22px;
     height: 42px;
-    width: 42px;
+    min-width: 42px;
     margin-right: 16px;
     border: none;
     border-radius: 100px;
@@ -26,10 +26,12 @@
 }
 
 .profile-dropdown-details > h1 {
+    overflow: hidden;
     margin-bottom: 5px;
 }
 
 .profile-dropdown-details > h2 {
+    overflow: hidden;
     font-size: 14px;
     margin-bottom: 2px;
 }
