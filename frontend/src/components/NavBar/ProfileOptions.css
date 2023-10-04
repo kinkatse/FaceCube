@@ -27,16 +27,18 @@
     font-size: 17px;
     padding: 0;
     padding-top: 2px;
-    margin-bottom: 4px;
     border-top: 2px solid rgb(1, 1, 1);
     border-left: 2px solid rgb(1, 1, 1);
     border-right: 2px solid rgb(1, 1, 1);
     border-radius: 4px;
-    margin-right: 16px;
+    margin-left: 3px;
+    margin-right: 15px;
+    margin-bottom: 4px;
 }
 
 .options-icon {
     font-size: 20px;
     padding-bottom: 2px;
+    margin-left: 2px;
     margin-right: 16px;
 }

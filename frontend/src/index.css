@@ -55,6 +55,22 @@ table {
 
 
 
+@keyframes fadein {
+    from { opacity: 0%; }
+    to { opacity: 100%; }
+}
+
+@keyframes fadeout {
+    from { opacity: 100%; }
+    to { opacity: 0%; }
+}
+
+@keyframes fadeinandout {
+    0% { opacity: 100%; }
+    50% { opacity: 0%; }
+    100% { opacity: 100%; }
+}
+
 #content {
     position: relative;
     top: 56px;
@@ -74,6 +90,17 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     border-radius: 5px;
+}
+
+a.logo-container {
+    display: flex;
+    padding: 0;
+}
+
+.youtube-logo {
+    height: 30px;
+    margin-top: 2px;
+    margin-left: 8px;
 }
 
 button {
@@ -98,20 +125,4 @@ a {
 
 a:hover {
     color: rgb(51, 140, 255);
-}
-
-@keyframes fadein {
-    from { opacity: 0%; }
-    to { opacity: 100%; }
-}
-
-@keyframes fadeout {
-    from { opacity: 100%; }
-    to { opacity: 0%; }
-}
-
-@keyframes fadeinandout {
-    0% { opacity: 100%; }
-    50% { opacity: 0%; }
-    100% { opacity: 100%; }
 }

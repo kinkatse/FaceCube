@@ -1,9 +1,9 @@
-@keyframes smoothslidein {
+@keyframes sidebar-smoothslidein {
     0% { transform: translate(-100%, 0%) }
     100% { transform: translate(0%, 0%) }
 }
 
-@keyframes smoothslideout {
+@keyframes sidebar-smoothslideout {
     0% { transform: translate(0%, 0%) }
     100% { transform: translate(-100%, 0%) }
 }
@@ -22,11 +22,11 @@
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     z-index: 15;
-    animation: 0.3s smoothslidein forwards;
+    animation: 0.3s sidebar-smoothslidein forwards;
 }
 
 .sidebar-whole.after-close {
-    animation: 0.3s smoothslideout forwards;
+    animation: 0.3s sidebar-smoothslideout forwards;
 }
 
 .sidebar-header {
@@ -36,10 +36,6 @@
     padding-bottom: 16px;
     font-size: 22px;
     border-bottom: 1px solid rgba(178, 178, 178, 0.5);
-}
-
-.sidebar-header h1 {
-    margin-left: 20px;
 }
 
 .hamburger-about-links {

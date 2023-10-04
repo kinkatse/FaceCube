@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal, openModal } from "../../store/modal";
+import { NavLink } from "react-router-dom";
 import HamburgerMenu from "../HamburgerMenu";
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
+import logo from "../../assets/youtube-logo.png"
 import './Modal.css'
 
 const Modal = () => {
@@ -55,7 +57,7 @@ const Modal = () => {
             <i className="fa-solid fa-bars"/>
           </button>
         )
-        modalComponent = <HamburgerMenu/>;
+        modalComponent = <HamburgerMenu handleCloseModal={handleCloseModal}/>;
         break;
       default:
         modalComponent = null;
@@ -66,7 +68,9 @@ const Modal = () => {
         return (
           <>
             {iconButton}
-            <h1>FaceCube</h1>
+            <NavLink exact to={`/`} onClick={handleCloseModal} className="logo-container">
+              <img src={logo} className="youtube-logo"/>
+            </NavLink>
           </>
         )
       } else {
