@@ -1,12 +1,12 @@
-/* @keyframes fadeout {
-    0% { transform: translate(-100%, 0%) }
-    100% { transform: translate(0%, 0%) }
+@keyframes modal-smoothslidein {
+    0% { transform: translate(0%, -200%) }
+    100% { transform: translate(0%, -50%); }
 }
 
-@keyframes fadein {
-    0% { transform: translate(0%, 0%) }
-    100% { transform: translate(-100%, 0%) }
-} */
+@keyframes modal-smoothslideout {
+    0% { transform: translate(0%, -50%); }
+    100% { transform: translate(0%, -200%) }
+}
 
 .modal {
     display: flex;
@@ -50,11 +50,11 @@
     background: white;
     border-radius: 7px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    animation: 0.3s fadein forwards;
+    animation: 0.3s modal-smoothslidein forwards;
 }
 
 .modal-whole.after-close {
-    animation: 0.3s fadeout forwards;
+    animation: 0.3s modal-smoothslideout forwards;
 }
 
 .modal-header {

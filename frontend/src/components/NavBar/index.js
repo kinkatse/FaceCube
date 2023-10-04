@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { openModal } from '../../store/modal';
 import ProfileButtons from './ProfileButtons';
-import './NavBar.css';
 import Search from '../Search';
 import AuthForm from '../AuthForm';
-import { openModal } from '../../store/modal';
+import logo from '../../assets/youtube-logo.png';
+import './NavBar.css';
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ const NavBar = () => {
       <button onClick={() => handleOpenModal("sidebar")} className="hamburger-menu">
         <i className="fa-solid fa-bars"/>
       </button>
-      <NavLink exact to="/">Home</NavLink>
+      <NavLink exact to={`/`} className="logo-container">
+        <img src={logo} className="youtube-logo" />
+      </NavLink>
     </section>
   )
 
