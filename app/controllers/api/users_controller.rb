@@ -1,11 +1,6 @@
 class Api::UsersController < ApplicationController
   wrap_parameters include: User.attribute_names + ['password']
 
-  def index
-    @users = User.all
-    render json: { users: @users }
-  end
-
   def show
   end
 
@@ -24,6 +19,6 @@ class Api::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :firstname, :lastname)
+    params.require(:user).permit(:username, :email, :password, :firstname, :lastname, :bio)
   end
 end

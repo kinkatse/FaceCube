@@ -16,6 +16,11 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
+  has_many :videos,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Video
+
   def self.find_by_credentials(credential, password)
     # If credential is of the URI::MailTo::EMAIL_REGEXP format,
     # then we set field to be :email, if not, then :username
