@@ -1,15 +1,16 @@
 class Video < ApplicationRecord
-    validates :title, :views, presence: true
+    validates :title, :views, :category, :visibility, presence: true
 
-    before_validation :ensure_video_views_and_title
+    before_validation :ensure_video_details
     
     belongs_to :author,
       primary_key: :id,
       foreign_key: :user_id,
       class_name: :User
 
-    def ensure_video_views_and_title
+    def ensure_video_details
         self.views ||= 0
         self.title ||= "Untitled"
+        self.visibility ||= "public"
     end
 end

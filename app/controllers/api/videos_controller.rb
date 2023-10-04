@@ -2,12 +2,12 @@ class Api::VideosController < ApplicationController
     wrap_parameters include: Video.attribute_names
 
     def index
-      @videos = Video.all
+      @videos = Video.includes(:author).all
       render :index
     end
 
     def show
-      @video = Video.find(params[:id])
+      @video = Video.includes(:author).find(params[:id])
       render :show
     end
   
@@ -23,8 +23,8 @@ class Api::VideosController < ApplicationController
   
     def update
     end
-  
+
     def video_params
-      params.require(:video).permit(:user_id, :title, :description, :views)
+      params.require(:video).permit(:id, :user_id, :title, :description, :views)
     end
 end
