@@ -2,12 +2,17 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import modalReducer from './modal';
 import sessionReducer from './session';
+import videosReducer from './video';
 
+const entitiesReducer = combineReducers({
+    videos: videosReducer
+})
 const uiReducer = combineReducers({
     modal: modalReducer
 })
 const rootReducer = combineReducers({
     session: sessionReducer,
+    entities: entitiesReducer,
     ui: uiReducer
 });
 

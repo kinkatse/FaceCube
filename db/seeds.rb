@@ -15,6 +15,7 @@ ApplicationRecord.transaction do
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
+    ApplicationRecord.connection.reset_pk_sequence!('videos')
 end
 
 puts "Creating users..."

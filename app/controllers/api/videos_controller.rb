@@ -24,7 +24,10 @@ class Api::VideosController < ApplicationController
     def update
     end
 
+    def destroy
+    end
+
     def video_params
-      params.require(:video).permit(:id, :user_id, :title, :description, :views)
+      params.require(:video).permit(:id, :user_id, :title, :description, :views, :category, :visibility, :tags)
     end
 end
