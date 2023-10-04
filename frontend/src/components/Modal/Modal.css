@@ -1,3 +1,13 @@
+/* @keyframes fadeout {
+    0% { transform: translate(-100%, 0%) }
+    100% { transform: translate(0%, 0%) }
+}
+
+@keyframes fadein {
+    0% { transform: translate(0%, 0%) }
+    100% { transform: translate(-100%, 0%) }
+} */
+
 .modal {
     display: flex;
     justify-content: center;
@@ -19,6 +29,11 @@
     left: 0;
     padding: 50px;
     background: rgba(0, 0, 0, 0.6);
+    animation: 0.3s fadein forwards;
+}
+
+.modal-background.after-close {
+    animation: 0.3s fadeout forwards;
 }
 
 .modal-whole {
@@ -35,6 +50,11 @@
     background: white;
     border-radius: 7px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    animation: 0.3s fadein forwards;
+}
+
+.modal-whole.after-close {
+    animation: 0.3s fadeout forwards;
 }
 
 .modal-header {
@@ -67,20 +87,4 @@
     margin-top: 1px;
     margin-right: 1px;
     border-radius: 20px;
-}
-
-.sidebar-whole {
-    font-family: Roboto, Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    height: 100vh;
-    width: 216px;
-    padding: 12px;
-    padding-top: 8px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    z-index: 15;
 }

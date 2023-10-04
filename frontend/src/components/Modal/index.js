@@ -14,7 +14,20 @@ const Modal = () => {
       dispatch(openModal(modalType));
     }
     const handleCloseModal = () => {
-      dispatch(closeModal());
+      const modalBackgroundEl = document.getElementsByClassName('modal-background')[0]
+      modalBackgroundEl.classList.add("after-close")
+
+      if (modal.type === "sidebar") {
+        const sidebarEl = document.getElementsByClassName('sidebar-whole')[0]
+        sidebarEl.classList.add("after-close")
+      } else {
+        const modalEl = document.getElementsByClassName('modal-whole')[0]
+        modalEl.classList.add("after-close")
+      }
+
+      setTimeout(() => {
+        dispatch(closeModal());
+      }, 300)
     }
 
     let modalComponent;
@@ -48,6 +61,24 @@ const Modal = () => {
         modalComponent = null;
     }
     
+    const renderHeader = () => {
+      if (modalType === "sidebar") {
+        return (
+          <>
+            {iconButton}
+            <h1>FaceCube</h1>
+          </>
+        )
+      } else {
+        return (
+          <>
+            <h1>{modalHeaderText}</h1>
+            {iconButton}
+          </>
+        )
+      }
+    }
+
     useEffect(() => {
         if (!modalComponent) return;
         const body = document.body
@@ -64,18 +95,7 @@ const Modal = () => {
         <div className="modal-background" onClick={handleCloseModal}></div>
         <div className={`${modalType}-whole`}>
           <header className={`${modalType}-header`}>
-            {modalType === "modal" &&
-              <>
-                <h1>{modalHeaderText}</h1>
-                {iconButton}
-              </>
-            }
-            {modalType === "sidebar" &&
-              <>
-                {iconButton}
-                <h1>FaceCube</h1>
-              </>
-            }
+            {renderHeader()}
           </header>
           {modalComponent}
         </div>
