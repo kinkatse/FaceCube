@@ -1,22 +1,31 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import earth from "../../assets/videos/earth.mov"
+import Videos from "./ImportVideos";
+import logo from "../../assets/youtube-logo.png"
 import './VideoShow.css'
 
 const VideoShow = () => {
     const { videoId } = useParams();
 
     useEffect(() => {
-        debugger
-
+        
     }, [videoId])
 
     return (
         <div>
             <h1>{videoId}</h1>
-            {/* <video src={earth} autoPlay className="video-show"></video> */}
-            <video width="750" height="500" controls>
-                <source src={earth} type="video/mp4"/>
+            <video
+                id="my-video"
+                className="video-js"
+                controls
+                autoPlay
+                preload="auto"
+                width="720"
+                height="400"
+                poster={logo}
+                data-setup="{}"
+            >
+                <source src={Videos[videoId]} type="video/mp4" />
             </video>
         </div>
     )
