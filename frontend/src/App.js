@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom'
 import Modal from './components/Modal';
 import NavBar from './components/NavBar';
+import VideoShow from './components/VideoShow';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           </Route>
           <Route path="/video/:videoId">
             <h1>Video Show Page</h1>
+            <VideoShow />
           </Route>
           <Route path="/channel/:channelId">
             <h1>Channel Show Page</h1>
