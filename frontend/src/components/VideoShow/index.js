@@ -1,32 +1,45 @@
+import React from 'react';
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import VideoJS from "../VideoPlayer/VideoJS";
 import Videos from "./ImportVideos";
 import logo from "../../assets/youtube-logo.png"
 import './VideoShow.css'
 
 const VideoShow = () => {
     const { videoId } = useParams();
+    const playerRef = React.useRef(null);
 
-    useEffect(() => {
-        
-    }, [videoId])
+    const videoJsOptions = {
+        autoplay: true,
+        controls: true,
+        responsive: true,
+        fluid: true,
+        sources: [{
+            src: `${Videos[videoId]}`,
+            type: 'video/mp4'
+        }]
+    };
+
+    const handlePlayerReady = (player) => {
+        playerRef.current = player;
+    
+        // You can handle player events here, for example:
+        player.on('waiting', () => {
+            videojs.log('player is waiting');
+        });
+    
+        player.on('dispose', () => {
+            videojs.log('player will dispose');
+        });
+    };
 
     return (
         <div>
             <h1>{videoId}</h1>
-            <video
-                id="my-video"
-                className="video-js"
-                controls
-                autoPlay
-                preload="auto"
-                width="720"
-                height="400"
-                poster={logo}
-                data-setup="{}"
-            >
-                <source src={Videos[videoId]} type="video/mp4" />
-            </video>
+            <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
         </div>
     )
 }
