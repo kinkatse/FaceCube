@@ -1,9 +1,15 @@
+/* @media (min-width: 988px){
+} */
+
+/* @media (max-width: 988px){
+} */
+
 .videojs-container {
-    /* max-height: 720px;
-    max-width: 1280px; */
+    max-height: 720px;
+    max-width: 1280px;
     position: relative;
-    max-height: 523px;
-    max-width: 930px;
+    /* max-height: 523px;
+    max-width: 930px; */
 }
 
 .videojs-container:hover .vjs-control-bar {
