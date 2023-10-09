@@ -13,7 +13,7 @@ function LoginForm({ handleOpenModal, handleCloseModal }) {
   const [errors, setErrors] = useState([]);
   const [credentialPlaceholder, setCredentialPlaceHolder] = useState('Email')
 
-  if (sessionUser) return <Redirect to="/" />;
+  // if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -22,7 +22,7 @@ function SignupForm({ handleOpenModal, handleCloseModal }) {
     lastname: []
   });
 
-  if (sessionUser) return <Redirect to="/" />;
+  // if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
