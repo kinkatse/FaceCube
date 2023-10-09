@@ -83,3 +83,54 @@
     padding: 0;
     padding-bottom: 8px;
 }
+
+.vjs-progress-holder.vjs-slider-horizontal {
+    background: rgba(92, 92, 92, 0.6);
+}
+
+.video-js div.vjs-load-progress {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.video-js div.vjs-load-progress div {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.vjs-play-progress.vjs-slider-bar {
+    color: red;
+    background: red;
+}
+
+.video-js .vjs-menu ul.vjs-menu-content {
+    max-height: 100%;
+    width: 150px;
+    left: -55px;
+    bottom: 4.5em;
+    border-radius: 5px;
+    background-color: rgba(50, 50, 50, 0.8);
+}
+
+/* .video-js .vjs-playback-rate.vjs-menu-button:hover ul.vjs-menu-content {
+    display: none;
+}
+
+.video-js .vjs-playback-rate.vjs-menu-button:active ul.vjs-menu-content {
+    display: block;
+}
+
+.video-js .vjs-playback-rate.vjs-menu-button:target ul.vjs-menu-content {
+    display: block;
+} */
+
+.video-js .vjs-menu ul.vjs-menu-content > * {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px;
+    padding-left: 12px;
+    z-index: 15;
+}
+
+.video-js .vjs-menu ul.vjs-menu-content > *:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
