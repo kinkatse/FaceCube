@@ -45,6 +45,12 @@ function SignupForm({ handleOpenModal, handleCloseModal }) {
               newErrors['username'].push(error);
             } else if (error.includes("Password")) {
               newErrors['password'].push(error);
+            } else if (error.includes("Firstname")) {
+              let newError = "First name" + error.slice(9)
+              newErrors['firstname'].push(newError);
+            } else if (error.includes("Lastname")) {
+              let newError = "Last name" + error.slice(8)
+              newErrors['lastname'].push(newError);
             }
           }
           setErrors(newErrors);

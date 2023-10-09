@@ -31,6 +31,9 @@ const Modal = () => {
         dispatch(closeModal());
       }, 300)
     }
+    const handleSubmitCloseModal = () => {
+      dispatch(closeModal());
+    }
 
     let modalComponent;
     let modalHeaderText;
@@ -43,11 +46,11 @@ const Modal = () => {
     switch(modal.type) {
       case 'signup':
         modalHeaderText = 'Sign Up';
-        modalComponent = <SignupForm handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>;
+        modalComponent = <SignupForm handleOpenModal={handleOpenModal} handleCloseModal={handleSubmitCloseModal}/>;
         break;
       case 'login':
         modalHeaderText = 'Login';
-        modalComponent = <LoginForm handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>;
+        modalComponent = <LoginForm handleOpenModal={handleOpenModal} handleCloseModal={handleSubmitCloseModal}/>;
         break;
       case 'sidebar':
         modalHeaderText = 'FaceCube';

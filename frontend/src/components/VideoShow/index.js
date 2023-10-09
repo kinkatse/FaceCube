@@ -32,7 +32,7 @@ const VideoShow = () => {
         poster: logo,
         playbackRates: [0.5, 1, 1.5, 2],
         sources: [{
-            src: `https://facecube-seeds.s3.amazonaws.com/1.mp4`,
+            src: `${video?.file}`,
             type: 'video/mp4'
         }]
     };
@@ -61,7 +61,10 @@ const VideoShow = () => {
                 <div className='behind-player-background'></div>
               </div>
               <header className='video-user-header'>
-                <h1 className='video-title'>Title of this Video with ID: {videoId}</h1>
+                <h1 className='video-title'>{video.title}</h1>
+                <h1 className='video-title'>{video.username}</h1>
+                <h1 className='video-title'>{video.category}</h1>
+                <h1 className='video-title'>{video.views}</h1>
               </header>
             </section>
             <section className='video-show-left'>

@@ -1,4 +1,9 @@
 class Api::VideosController < ApplicationController
+    include ActiveStorage::SetCurrent
+    # before_action do
+    #     ActiveStorage::Current.url_options = request.base_url
+    # end
+
     wrap_parameters include: Video.attribute_names
 
     def index

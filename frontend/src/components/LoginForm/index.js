@@ -27,6 +27,7 @@ function LoginForm({ handleOpenModal, handleCloseModal }) {
         } catch {
           data = await res.text(); // Will hit this case if the server is down
         }
+        console.log(data)
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);

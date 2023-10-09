@@ -40,6 +40,14 @@ export const errorManager = (e, type, errors) => {
       idx = fieldArr.findIndex(el => el === "Password is too short (minimum is 6 characters)");
       fieldArr.splice(idx);
     }
+    if (fieldArr.includes("First name is too short (minimum is 3 characters)")) {
+      idx = fieldArr.findIndex(el => el === "First name is too short (minimum is 3 characters)");
+      fieldArr.splice(idx);
+    }
+    if (fieldArr.includes("Last name is too short (minimum is 3 characters)")) {
+      idx = fieldArr.findIndex(el => el === "Last name is too short (minimum is 3 characters)");
+      fieldArr.splice(idx);
+    }
     return newErrors
 }
 

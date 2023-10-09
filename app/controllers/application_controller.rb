@@ -8,6 +8,11 @@ class ApplicationController < ActionController::API
     before_action :snake_case_params
     before_action :attach_authenticity_token
 
+    # include ActiveStorage::SetCurrent
+    # before_action do
+    #     ActiveStorage::Current.url_options = request.base_url
+    # end
+
     def current_user
         @current_user ||= User.find_by(session_token: session[:session_token])
     end
