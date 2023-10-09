@@ -11,6 +11,7 @@ import VideoJS from "../VideoPlayer/VideoJS";
 // import logo from "../../assets/youtube-logo.png"
 import './VideoShow.css'
 import './VideoJS.css'
+import VideoIndex from '../VideoIndex';
 
 const VideoShow = () => {
     const { videoId } = useParams();
@@ -62,6 +63,7 @@ const VideoShow = () => {
             </section>
             <section className='video-show-left'>
               Related Video Index
+              <VideoIndex />
             </section>
         </div>
     )
