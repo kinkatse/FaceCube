@@ -45,7 +45,6 @@ const App = () => {
             <h2>Home Page</h2>
           </Route>
           <Route path="/video/:videoId">
-            <h1>Video Show Page</h1>
             <VideoShow />
           </Route>
           <Route path="/channel/:channelId">

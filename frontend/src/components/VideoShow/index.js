@@ -7,6 +7,7 @@ import VideoJS from "../VideoPlayer/VideoJS";
 import Videos from "./ImportVideos";
 import logo from "../../assets/youtube-logo.png"
 import './VideoShow.css'
+import './VideoJS.css'
 
 const VideoShow = () => {
     const { videoId } = useParams();
@@ -39,12 +40,19 @@ const VideoShow = () => {
     };
 
     return (
-        <div>
-            <h1>{videoId}</h1>
-            <div className='video-container'>
+        <div className='video-whole'>
+            <section className='video-show-right'>
+              <div className='videojs-container'>
                 <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
                 <div className='behind-player-background'></div>
-            </div>
+              </div>
+              <header className='video-user-header'>
+                <h1 className='video-title'>Title of this Video with ID: {videoId}</h1>
+              </header>
+            </section>
+            <section className='video-show-left'>
+              Related Video Index
+            </section>
         </div>
     )
 }
