@@ -46,7 +46,8 @@ end
     title: Faker::Quote.yoda,
     views: rand(0..1000),
     user_id: rand(1...12),
-    category: Faker::Sport.sport
+    category: "Music",
+    description: 'Im a game experiencer. Welcome to another "Pokemon Fire Red Version" with no commentary! I decided to record myself on "Pokemon Fire Red Version", and see how things turned out! I hope you guys find this relaxing and enjoyable. I will be making a lot more of these to help everyone sleep, relax, and study!'
     }) 
 end
 

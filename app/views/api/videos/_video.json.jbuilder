@@ -2,3 +2,4 @@ json.extract! video, :id, :user_id, :title, :description, :views, :category, :vi
 json.extract! video.author, :username
 
 json.file video.file.attached? ? url_for(video.file) : nil
+json.thumbnail video.thumbnail.attached? ? url_for(video.thumbnail) : nil

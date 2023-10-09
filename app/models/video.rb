@@ -9,6 +9,7 @@ class Video < ApplicationRecord
       class_name: :User
 
     has_one_attached :file
+    has_one_attached :thumbnail
 
     def ensure_video_details
         self.views ||= 0

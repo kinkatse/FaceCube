@@ -29,9 +29,12 @@ const VideoInfoHeader = ({ video }) => {
             </section>
           </div>
           <div className="video-details">
-            <h1>Category: {video.category}</h1>
-            <h1>Views: {video.views}</h1>
-            <p>{video.description}</p>
+            <header className="video-details-header">
+              <h1>{video.views} views</h1>
+              <h1>Premiered {video.createdAt}</h1>
+              <h1>Category: {video.category}</h1>
+            </header>
+            <p className="video-description">{video.description}</p>
           </div>
         </header>
     )
