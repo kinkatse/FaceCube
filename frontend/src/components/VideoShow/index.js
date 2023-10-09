@@ -2,16 +2,27 @@ import React from 'react';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from "react-router-dom";
 import VideoJS from "../VideoPlayer/VideoJS";
 import Videos from "./ImportVideos";
 import logo from "../../assets/youtube-logo.png"
 import './VideoShow.css'
 import './VideoJS.css'
+import { getVideo } from '../../store/video';
 
 const VideoShow = () => {
     const { videoId } = useParams();
+    const dispatch = useDispatch()
+    const video = useSelector(state => state.entities.videos[videoId])
+
+    useEffect(() => {
+        dispatch(getVideo(videoId))
+    }, [videoId])
+
     const playerRef = React.useRef(null);
+
+    if (!video) return null;
 
     const videoJsOptions = {
         autoplay: true,
@@ -21,7 +32,7 @@ const VideoShow = () => {
         poster: logo,
         playbackRates: [0.5, 1, 1.5, 2],
         sources: [{
-            src: `${Videos[videoId]}`,
+            src: `https://facecube-seeds.s3.amazonaws.com/1.mp4`,
             type: 'video/mp4'
         }]
     };
@@ -44,6 +55,9 @@ const VideoShow = () => {
             <section className='video-show-right'>
               <div className='videojs-container'>
                 <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+                {/* <video controls>
+                    <source src={`${video.file}`} type="video/mp4"/>
+                </video> */}
                 <div className='behind-player-background'></div>
               </div>
               <header className='video-user-header'>

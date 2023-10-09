@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require "open-uri"
+
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
@@ -29,7 +31,7 @@ User.create!(
 )
 
 # More users
-10.times do 
+12.times do 
     User.create!({
     username: Faker::Internet.unique.username(specifier: 3),
     email: Faker::Internet.unique.email,
@@ -37,6 +39,22 @@ User.create!(
     firstname: Faker::Name.first_name,
     lastname: Faker::Name.last_name
     }) 
+end
+
+12.times do 
+    Video.create!({
+    title: Faker::Quote.yoda,
+    views: rand(0..1000),
+    user_id: rand(1...12),
+    category: Faker::Sport.sport
+    }) 
+end
+
+Video.first(12).each_with_index do |video, index|
+    video.file.attach(
+        io: URI.open("https://facecube-seeds.s3.amazonaws.com/#{index + 1}.mp4"),
+        filename: "video_#{index + 1}.mp4"
+    )
 end
 
 puts "Done!"

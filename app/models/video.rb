@@ -8,6 +8,8 @@ class Video < ApplicationRecord
       foreign_key: :user_id,
       class_name: :User
 
+    has_one_attached :file
+
     def ensure_video_details
         self.views ||= 0
         self.title ||= "Untitled"
