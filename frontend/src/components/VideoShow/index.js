@@ -17,6 +17,8 @@ const VideoShow = () => {
         controls: true,
         responsive: true,
         fluid: true,
+        poster: logo,
+        playbackRates: [0.5, 1, 1.5, 2],
         sources: [{
             src: `${Videos[videoId]}`,
             type: 'video/mp4'
@@ -39,7 +41,10 @@ const VideoShow = () => {
     return (
         <div>
             <h1>{videoId}</h1>
-            <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+            <div className='video-container'>
+                <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+                <div className='behind-player-background'></div>
+            </div>
         </div>
     )
 }
