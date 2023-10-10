@@ -1,8 +1,10 @@
-.video-index-item {
+/* show page index */
+
+.video-show-item {
     display: flex;
 }
 
-.video-index-image > * {
+.video-show-image > * {
     margin-top: 4px;
     margin-bottom: 2px;
     border-radius: 10px;
@@ -11,14 +13,14 @@
     /* width: 100%; */
 }
 
-.index-item-details {
+.show-item-details {
     width: 50%;
     margin-top: 6px;
     margin-left: 8px;
     font-family: "YouTube Sans","Roboto",sans-serif;
 }
 
-.index-item-title {
+.show-item-title {
     font-size: 14px;
     font-weight: 500;
     white-space: nowrap;
@@ -27,12 +29,64 @@
     /* line-height: 1.05; */
 }
 
-.index-item-username {
+.show-item-username {
     font-size: 14px;
     color: rgba(70, 70, 70, 0.9);
 }
 
-.index-item-views {
+.show-item-views {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(70, 70, 70, 0.9);
+}
+
+/* home page index */
+
+.video-home-index {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 24px;
+}
+
+.video-home-item {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 30px;
+    max-width: 22%;
+    min-width: 21%;
+}
+
+.video-home-image > * {
+    margin-bottom: 2px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.home-item-details {
+    width: 92%;
+    margin-top: 6px;
+    margin-left: 6px;
+    font-family: "YouTube Sans","Roboto",sans-serif;
+}
+
+.home-item-title {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* line-height: 1.05; */
+}
+
+.home-item-username {
+    font-size: 14px;
+    color: rgba(70, 70, 70, 0.9);
+}
+
+.home-item-views {
     font-size: 12px;
     font-weight: 400;
     color: rgba(70, 70, 70, 0.9);

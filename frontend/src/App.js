@@ -6,6 +6,7 @@ import Modal from './components/Modal';
 import NavBar from './components/NavBar';
 import VideoShow from './components/VideoShow';
 import VideoJS from './components/VideoPlayer/VideoJS'
+import VideoIndex from './components/VideoIndex';
 
 const App = () => {
   // const playerRef = React.useRef(null);
@@ -41,8 +42,7 @@ const App = () => {
       <main id='content'>
         <Switch>
           <Route exact path="/">
-            <h2>Home Page</h2>
-            <h2>Home Page</h2>
+            <VideoIndex />
           </Route>
           <Route path="/video/:videoId">
             <VideoShow />

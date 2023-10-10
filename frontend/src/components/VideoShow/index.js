@@ -62,7 +62,7 @@ const VideoShow = () => {
               <VideoInfoHeader video={video}/>
             </section>
             <section className='video-show-left'>
-              <VideoIndex />
+              <VideoIndex videoId={video.id}/>
             </section>
         </div>
     )
