@@ -1,5 +1,5 @@
 class Video < ApplicationRecord
-    include ActiveStorage::Blob::Representable
+    # include ActiveStorage::Blob::Representable
 
     validates :title, :views, :category, :visibility, presence: true
 
@@ -12,12 +12,6 @@ class Video < ApplicationRecord
 
     has_one_attached :file
     has_one_attached :thumbnail
-    has_one_attached :preview_image
-
-    # def content_type
-    # end
-    # def video?
-    # end
 
     def ensure_video_details
         self.views ||= 0

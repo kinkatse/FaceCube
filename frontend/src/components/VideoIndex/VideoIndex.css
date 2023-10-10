@@ -1,4 +1,6 @@
 .video-index-item > * {
     margin-top: 6px;
     margin-bottom: 12px;
+    border-radius: 10px;
+    width: 100%;
 }

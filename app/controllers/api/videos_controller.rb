@@ -2,13 +2,11 @@ class Api::VideosController < ApplicationController
     wrap_parameters include: Video.attribute_names
 
     def index
-      # debugger
       @videos = Video.includes(:author).all
       render :index
     end
 
     def show
-      # debugger
       @video = Video.includes(:author).find(params[:id])
       render :show
     end

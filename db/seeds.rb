@@ -53,8 +53,12 @@ end
 
 Video.first(12).each_with_index do |video, index|
     video.file.attach(
-        io: URI.open("https://facecube-seeds.s3.amazonaws.com/#{index + 1}.mp4"),
+        io: URI.open("https://facecube-seeds.s3.amazonaws.com/video_#{index + 1}.mp4"),
         filename: "video_#{index + 1}.mp4"
+    )
+    video.thumbnail.attach(
+        io: URI.open("https://facecube-seeds.s3.amazonaws.com/thumbnail_#{index + 1}.png"),
+        filename: "thumbnail_#{index + 1}.png"
     )
 end
 
