@@ -7,7 +7,7 @@ const VideoIndexItem = ({ video, videoId }) => {
     return (
         <li className={`video-${indexClass}-item`} key={video.id}>
           <NavLink exact to={`/video/${video.id}`} className={`video-${indexClass}-image`}>
-            <img src={`${video.thumbnail}`} />
+            <img className="video-index-item-image" src={`${video.thumbnail}`} />
           </NavLink>
           <div className={`${indexClass}-item-details`}>
             <NavLink exact to={`/video/${video.id}`}>
