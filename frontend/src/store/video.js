@@ -85,7 +85,7 @@ export const deleteVideo = (videoId) => async (dispatch) => {
 const videosReducer = (state = { }, action) => {
   switch (action.type) {
     case RECEIVE_VIDEO:
-      let newState = {};
+      let newState = { ...state };
       let id = action.video.id;
       newState[id] = action.video;
       return newState;
