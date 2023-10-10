@@ -28,7 +28,7 @@ const clearVideos = () => {
   };
 };
 
-export const getVideos = () => async (dispatch) => {
+export const getVideos = async (dispatch) => {
     const response = await csrfFetch('/api/videos');
     const data = await response.json();
     dispatch(receiveVideos(data.videos));

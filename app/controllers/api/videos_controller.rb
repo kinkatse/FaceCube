@@ -1,17 +1,14 @@
 class Api::VideosController < ApplicationController
-    include ActiveStorage::SetCurrent
-    # before_action do
-    #     ActiveStorage::Current.url_options = request.base_url
-    # end
-
     wrap_parameters include: Video.attribute_names
 
     def index
+      # debugger
       @videos = Video.includes(:author).all
       render :index
     end
 
     def show
+      # debugger
       @video = Video.includes(:author).find(params[:id])
       render :show
     end
