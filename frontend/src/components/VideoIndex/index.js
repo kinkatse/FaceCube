@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getVideos } from '../../store/video';
 import './VideoIndex.css'
 import { NavLink } from 'react-router-dom';
+import VideoIndexItem from './VideoIndexItem';
 
 const VideoIndex = () => {
     const dispatch = useDispatch()
@@ -21,9 +22,7 @@ const VideoIndex = () => {
 
         Object.values(videos).map((video) => {
             videosArr.push(
-              <NavLink exact to={`/video/${video.id}`} key={video.id} className="video-index-item">
-                <img src={`${video.thumbnail}`} />
-              </NavLink>
+                <VideoIndexItem video={video}/>
             )
         })
         return videosArr

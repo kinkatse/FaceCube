@@ -1,8 +1,39 @@
-.video-index-item > * {
+.video-index-item {
+    display: flex;
+}
+
+.video-index-image > * {
     margin-top: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     border-radius: 10px;
     height: 94px;
     width: 168px;
     /* width: 100%; */
+}
+
+.index-item-details {
+    width: 50%;
+    margin-top: 6px;
+    margin-left: 8px;
+    font-family: "YouTube Sans","Roboto",sans-serif;
+}
+
+.index-item-title {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* line-height: 1.05; */
+}
+
+.index-item-username {
+    font-size: 14px;
+    color: rgba(70, 70, 70, 0.9);
+}
+
+.index-item-views {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(70, 70, 70, 0.9);
 }

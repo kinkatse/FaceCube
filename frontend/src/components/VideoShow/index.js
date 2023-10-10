@@ -62,7 +62,6 @@ const VideoShow = () => {
               <VideoInfoHeader video={video}/>
             </section>
             <section className='video-show-left'>
-              Related Video Index
               <VideoIndex />
             </section>
         </div>
