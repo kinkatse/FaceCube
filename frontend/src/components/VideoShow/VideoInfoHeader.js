@@ -12,7 +12,9 @@ const VideoInfoHeader = ({ video }) => {
                 <i className="fa-solid fa-user video-user-icon"/>
               </NavLink>
               <div className='video-user-info'>
-                <h1>{video.username}</h1>
+                <NavLink exact to={`/channel/${video.userId}`} >
+                  <h1>{video.username}</h1>
+                </NavLink>
                 <h3>94.5K subscribers</h3>
               </div>
               <button className="subscribe-button">Subscribe</button>

@@ -1,10 +1,11 @@
 @media (min-width: 988px){
     .video-whole {
         display: flex;
+        justify-content: center;
     }
     
     .video-show-right {
-        width: 100%;
+        width: 61%;
         /* max-height: 523px;
         max-width: 930px; */
         max-height: 720px;
@@ -15,7 +16,7 @@
     }
     
     .video-show-left {
-        width: 35%;
+        width: 26.7%;
         padding-top: 24px;
         padding-right: 24px;
     }

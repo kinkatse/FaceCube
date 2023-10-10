@@ -122,7 +122,3 @@ a {
     color: black;
     text-decoration: none;
 }
-
-a:hover {
-    color: rgb(51, 140, 255);
-}
