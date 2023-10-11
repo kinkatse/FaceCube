@@ -16,9 +16,9 @@ const VideoIndexItem = ({ video, videoId }) => {
             <NavLink exact to={`/channel/${video.userId}`}>
               <h1 className={`${indexClass}-item-username`}>{video.username}</h1>
             </NavLink>
-            <div>
+            <div className={`${indexClass}-other-details`}>
               <h1 className={`${indexClass}-item-views`}>{video.views} views</h1>
-              <h1 className={`${indexClass}-item-views`}>{video.createdAt} ago</h1>
+              <h1 className={`${indexClass}-item-date`}>{video.createdAt} ago</h1>
             </div>
           </div>
         </li>
