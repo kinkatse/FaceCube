@@ -135,7 +135,7 @@ header.video-details-header {
 }
 
 .video-details-header > * {
-    margin-right: 16px;
+    margin-right: 7px;  
     font-size: 14px;
     font-weight: 500;
 }

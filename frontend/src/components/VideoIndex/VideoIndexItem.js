@@ -4,6 +4,43 @@ import { NavLink } from 'react-router-dom';
 const VideoIndexItem = ({ video, videoId }) => {
     const indexClass = videoId ? 'show' : 'home'
 
+    const timeAgo = (date) => {
+        let seconds = Math.floor((new Date() - date) / 1000);
+        let interval = seconds / 31536000;
+        let time;
+      
+        if (interval > 1) {
+            time = Math.floor(interval);
+            if (time === 1) return time + " year";
+            return time + " years";
+        }
+        interval = seconds / 2592000;
+        if (interval > 1) {
+            time = Math.floor(interval);
+            if (time === 1) return time + " month";
+            return time + " months";
+        }
+        interval = seconds / 86400;
+        if (interval > 1) {
+            time = Math.floor(interval);
+            if (time === 1) return time + " day";
+            return time + " days";
+        }
+        interval = seconds / 3600;
+        if (interval > 1) {
+            time = Math.floor(interval);
+            if (time === 1) return time + " hour";
+            return time + " hours";
+        }
+        interval = seconds / 60;
+        if (interval > 1) {
+            time = Math.floor(interval);
+            if (time === 1) return time + " minute";
+            return time + " minutes";
+        }
+        return Math.floor(seconds) + " seconds";
+    }
+
     return (
         <li className={`video-${indexClass}-item`} key={video.id}>
           <NavLink exact to={`/video/${video.id}`} className={`video-${indexClass}-image`}>
@@ -22,7 +59,8 @@ const VideoIndexItem = ({ video, videoId }) => {
                 </NavLink>
                 <div className={`${indexClass}-other-details`}>
                   <h1 className={`${indexClass}-item-views`}>{video.views} views</h1>
-                  <h1 className={`${indexClass}-item-date`}>{video.createdAt} ago</h1>
+                  <p className='dot'>•</p>
+                  <h1 className={`${indexClass}-item-date`}>{timeAgo(new Date(video.createdAt))} ago</h1>
                 </div>
               </div>
           </div>

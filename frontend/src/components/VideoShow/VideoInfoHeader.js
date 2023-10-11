@@ -33,8 +33,8 @@ const VideoInfoHeader = ({ video }) => {
           <div className="video-details">
             <header className="video-details-header">
               <h1>{video.views} views</h1>
-              <h1>Premiered {video.createdAt}</h1>
-              <h1>Category: {video.category}</h1>
+              <h1>{video.uploaded}</h1>
+              <h1>{video.category}</h1>
             </header>
             <p className="video-description">{video.description}</p>
           </div>

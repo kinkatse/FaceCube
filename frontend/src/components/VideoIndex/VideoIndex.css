@@ -51,7 +51,7 @@
     font-size: 12px;
     font-weight: 400;
     color: rgba(70, 70, 70, 0.9);
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 .show-item-date {
@@ -170,7 +170,7 @@
     font-size: 14px;
     font-weight: 400;
     color: rgba(70, 70, 70, 0.9);
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 .home-item-date {
@@ -193,4 +193,10 @@
 
 .video-home-icon > i {
     font-size: 18px;
+}
+
+.dot {
+    font-size: 15px;
+    color: rgba(70, 70, 70, 0.9);
+    margin-right: 4px;
 }
