@@ -54,14 +54,14 @@ const VideoShow = () => {
 
     return (
         <div className='video-whole'>
-            <section className='video-show-right'>
+            <section className='video-show-left'>
               <div className='videojs-container'>
                 <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
                 <div className='behind-player-background'></div>
               </div>
               <VideoInfoHeader video={video}/>
             </section>
-            <section className='video-show-left'>
+            <section className='video-show-right'>
               <VideoIndex videoId={video.id}/>
             </section>
         </div>

@@ -14,11 +14,22 @@
 }
 
 .show-item-details {
-    width: 50%;
     /* margin-top: 9px; */
     margin-top: 5px;
     margin-left: 8px;
     font-family: "YouTube Sans","Roboto",sans-serif;
+}
+
+@media (min-width: 988px){
+    .show-item-details {
+        width: 50%;
+    }
+}
+
+@media (max-width: 988px){
+    .show-item-details {
+        width: 100%;
+    }
 }
 
 .show-item-title {
