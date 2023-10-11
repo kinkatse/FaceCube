@@ -61,11 +61,6 @@
     cursor: pointer;
 }
 
-.video-header-icon:hover {
-    color: inherit;
-    background-color: rgba(170, 170, 170, 0.35);
-}
-
 .video-user-icon {
     font-size: 18px;
 }
