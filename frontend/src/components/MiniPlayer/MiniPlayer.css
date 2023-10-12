@@ -1,45 +1,60 @@
 .mini-player {
     position: fixed ;
     bottom: 0;
-    right: 0;
+    right: 12px;
     width: 400px;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
     z-index: 15;
+}
+
+.mini-player:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.40);
 }
 
 .mini-player .video-js .vjs-tech {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
     background: black;
 }
 
-.mini-player .video-js .vjs-tech:hover {
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.40);
-}
-
 @keyframes fadedarkscreenin {
-    from { background: rgba(0, 0, 0, 0) }
-    to { background: rgba(0, 0, 0, 0.40) }
+    from { background-color: rgba(0, 0, 0, 0) }
+    to { background-color: rgba(0, 0, 0, 0.40) }
 }
 
 @keyframes fadedarkscreenout {
-    from { background: rgba(0, 0, 0, 0.40) }
-    to { background: rgba(0, 0, 0, 0) }
+    from { background-color: rgba(0, 0, 0, 0.40) }
+    to { background-color: rgba(0, 0, 0, 0) }
 }
 
-.mini-player .videojs-container .behind-player-background {
-    animation: fadedarkscreenout 0.5s forwards;
-}
-
-.mini-player .videojs-container:hover .behind-player-background {
+.mini-player .mini-behind-player-background {
+    display: none;
+    position: absolute;
+    bottom: 0;
     height: 100%;
+    width: 100%;
+    border-radius: 10px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    animation: fadedarkscreenin 0.5s forwards;
+}
+
+.mini-after-hover-away {
+    animation: fadedarkscreenout 0.3s forwards;
+}
+
+.mini-player .videojs-container:hover .mini-behind-player-background {
+    animation: fadedarkscreenin 0.3s forwards;
+}
+
+button.mini-close-buttons-after {
+    animation: fadeout 0.3s forwards;
 }
 
 .mini-player button {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -54,10 +69,54 @@
     left: 8px;
     font-size: 20px;
     transform: rotate(-90deg);
+    animation: fadein 0.3s forwards;
 }
 
 .mini-close {
     top: 10px;
     right: 8px;
     font-size: 26px;
+    animation: fadein 0.3s forwards;
+}
+
+.mini-expand:hover, .mini-close:hover {
+    background-color: transparent;
+}
+
+.mini-player .video-js .vjs-control-bar {
+    margin-left: 0;
+    opacity: 100%;
+}
+
+.mini-player .video-js .vjs-progress-control {
+    position: absolute;
+    top: auto;
+    bottom: -5px;
+    height: 10px;
+    width: 400px;
+    z-index: 16;
+}
+
+.mini-header {
+    height: 40px;
+    padding: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: white;
+}
+
+.mini-item-title {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    margin-bottom: 7px;
+}
+
+.mini-item-username {
+    font-size: 12px;
+    color: rgba(70, 70, 70, 0.9);
+    margin-bottom: 6px;
 }

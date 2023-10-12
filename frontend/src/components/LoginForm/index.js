@@ -46,22 +46,8 @@ function LoginForm({ handleOpenModal, handleCloseModal }) {
     const input = document.getElementById("credential")
     if (input && credentialPlaceholder === "Email") {
       setCredentialPlaceHolder("Username")
-      // setTimeout(() => {
-      //   input.classList.remove("credential-email")
-      //   input.classList.add("credential-username")
-      // }, 1000)
     } else if (input && credentialPlaceholder === "Username") {
       setCredentialPlaceHolder("Email")
-      // setTimeout(() => {
-      //   input.classList.remove("credential-username")
-      //   input.classList.add("credential-email")
-      // }, 1000)
-    // } else {
-    //   setCredentialPlaceHolder("Email")
-    //   setTimeout(() => {
-    //     input.classList.remove("credential-username")
-    //     input.classList.add("credential-email")
-    //   }, 1000)
     }
   }, 2000)
 
@@ -72,7 +58,6 @@ function LoginForm({ handleOpenModal, handleCloseModal }) {
         <ul>
           {errors.map(error => <li key={error} className="login-errors">{error}</li>)}
         </ul>
-        {/* <h1 id="credential">{credentialPlaceholder}</h1> */}
         <input
           id="credential"
           type="text"

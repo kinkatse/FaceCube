@@ -20,6 +20,32 @@ const MiniPlayer = () => {
       return;
     }
 
+    const mouseEnterHandler = (e) => {
+        const expand = document.querySelector(".mini-expand");
+        const close = document.querySelector(".mini-close");
+        const background = document.querySelector(".mini-behind-player-background");
+        expand.classList.remove("mini-close-buttons-after");
+        close.classList.remove("mini-close-buttons-after");
+        background.classList.remove("mini-after-hover-away");
+        expand.style.display = "flex";
+        close.style.display = "flex";
+        background.style.display = "block";
+    }
+
+    const mouseLeaveHandler = (e) => {
+        const expand = document.querySelector(".mini-expand");
+        const close = document.querySelector(".mini-close");
+        const background = document.querySelector(".mini-behind-player-background");
+        expand.classList.add("mini-close-buttons-after");
+        close.classList.add("mini-close-buttons-after");
+        background.classList.add("mini-after-hover-away");
+        setTimeout(() => {
+            expand.style.display = "none";
+            close.style.display = "none";
+            background.style.display = "none";
+        }, 200)
+    }
+
     if (!videoId) return null;
 
     const videoJsOptions = {
@@ -34,17 +60,21 @@ const MiniPlayer = () => {
     };
 
     return (
-      <div className="mini-player">
+      <div onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler} className="mini-player">
         <div className='videojs-container'>
           <button onClick={handleClickExpand} className="mini-expand">
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </button>
           <VideoJS options={videoJsOptions} />
-          <div className='behind-player-background'></div>
+          <div className='mini-behind-player-background'></div>
           <button onClick={handleCloseMini} className="mini-close">
             <i className="fa-solid fa-xmark"/>
           </button>
         </div>
+        <header className="mini-header">
+          <h1 className={`mini-item-title`}>{video.title}</h1>
+          <h1 className={`mini-item-username`}>{video.username}</h1>
+        </header>
       </div>
     )
 }
