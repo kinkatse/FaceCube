@@ -5,3 +5,59 @@
     width: 400px;
     z-index: 15;
 }
+
+.mini-player .video-js .vjs-tech {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.30);
+    background: black;
+}
+
+.mini-player .video-js .vjs-tech:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.40);
+}
+
+@keyframes fadedarkscreenin {
+    from { background: rgba(0, 0, 0, 0) }
+    to { background: rgba(0, 0, 0, 0.40) }
+}
+
+@keyframes fadedarkscreenout {
+    from { background: rgba(0, 0, 0, 0.40) }
+    to { background: rgba(0, 0, 0, 0) }
+}
+
+.mini-player .videojs-container .behind-player-background {
+    animation: fadedarkscreenout 0.5s forwards;
+}
+
+.mini-player .videojs-container:hover .behind-player-background {
+    height: 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    animation: fadedarkscreenin 0.5s forwards;
+}
+
+.mini-player button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    color: white;
+    z-index: 16;
+}
+
+.mini-expand {
+    top: 8px;
+    left: 8px;
+    font-size: 20px;
+    transform: rotate(-90deg);
+}
+
+.mini-close {
+    top: 10px;
+    right: 8px;
+    font-size: 26px;
+}
