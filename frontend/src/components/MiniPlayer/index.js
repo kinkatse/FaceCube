@@ -23,25 +23,31 @@ const MiniPlayer = () => {
     const mouseEnterHandler = (e) => {
         const expand = document.querySelector(".mini-expand");
         const close = document.querySelector(".mini-close");
+        const playButton = document.querySelector(".mini-player .video-js .vjs-play-control");
         const background = document.querySelector(".mini-behind-player-background");
-        expand.classList.remove("mini-close-buttons-after");
-        close.classList.remove("mini-close-buttons-after");
+        expand.classList.remove("mini-buttons-after");
+        close.classList.remove("mini-buttons-after");
+        playButton.classList.remove("mini-buttons-after");
         background.classList.remove("mini-after-hover-away");
         expand.style.display = "flex";
         close.style.display = "flex";
+        playButton.style.display = "block";
         background.style.display = "block";
     }
 
     const mouseLeaveHandler = (e) => {
         const expand = document.querySelector(".mini-expand");
         const close = document.querySelector(".mini-close");
+        const playButton = document.querySelector(".mini-player .video-js .vjs-play-control");
         const background = document.querySelector(".mini-behind-player-background");
-        expand.classList.add("mini-close-buttons-after");
-        close.classList.add("mini-close-buttons-after");
+        expand.classList.add("mini-buttons-after");
+        close.classList.add("mini-buttons-after");
+        playButton.classList.add("mini-buttons-after");
         background.classList.add("mini-after-hover-away");
         setTimeout(() => {
             expand.style.display = "none";
             close.style.display = "none";
+            playButton.style.display = "none";
             background.style.display = "none";
         }, 200)
     }
