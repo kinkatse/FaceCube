@@ -7,8 +7,6 @@ import { Redirect, useParams } from "react-router-dom";
 import { getVideo } from '../../store/video';
 import VideoInfoHeader from './VideoInfoHeader';
 import VideoJS from "../VideoPlayer/VideoJS";
-// import Videos from "./ImportVideos";
-// import logo from "../../assets/youtube-logo.png"
 import './VideoShow.css'
 import './VideoJS.css'
 import VideoIndex from '../VideoIndex';
@@ -25,7 +23,8 @@ const VideoShow = () => {
     }, [videoId])
 
     if (!video) return null;
-    if (miniVideoId === parseInt(videoId)) return <Redirect to="/"/>
+    if (miniVideoId) return <Redirect to="/"/>
+    // if (miniVideoId === parseInt(videoId)) return <Redirect to="/"/>
 
     const videoJsOptions = {
         autoplay: true,

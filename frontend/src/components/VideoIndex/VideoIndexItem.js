@@ -1,8 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
+import { openMiniPlayer } from '../../store/miniPlayer';
 
 const VideoIndexItem = ({ video, videoId }) => {
-    const indexClass = videoId ? 'show' : 'home'
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const indexClass = videoId ? 'show' : 'home';
+    const miniVideoId = useSelector(state => state.ui.mini.videoId);
 
     const timeAgo = (date) => {
         let seconds = Math.floor((new Date() - date) / 1000);
@@ -41,22 +46,32 @@ const VideoIndexItem = ({ video, videoId }) => {
         return Math.floor(seconds) + " seconds";
     }
 
+    const handleClick = (e) => {
+      e.preventDefault();
+      if (e.target.classList[0] === `${indexClass}-item-username` 
+      || e.target.classList[0] === 'fa-solid') {
+        history.push(`/channel/${video.userId}`);
+        return;
+      }
+      if (miniVideoId) {
+        dispatch(openMiniPlayer(video.id));
+        return;
+      }
+      history.push(`/video/${video.id}`);
+    }
+
     return (
-      <NavLink exact to={`/video/${video.id}`} className={`video-${indexClass}-item`}>
-        <NavLink exact to={`/video/${video.id}`} className={`video-${indexClass}-image`}>
+      <div onClick={handleClick} className={`video-${indexClass}-item`}>
+        <div className={`video-${indexClass}-image`}>
           <img className="video-index-item-image" src={`${video.thumbnail}`} />
-        </NavLink>
+        </div>
         <div className={`${indexClass}-item-details`}>
-            <NavLink exact to={`/channel/${video.userId}`} className={`video-${indexClass}-icon`}>
+            <div className={`video-${indexClass}-icon`}>
               <i className="fa-solid fa-user"/>
-            </NavLink>
+            </div>
             <div>
-              <NavLink exact to={`/video/${video.id}`}>
-                <h1 className={`${indexClass}-item-title`}>{video.title}</h1>
-              </NavLink>
-              <NavLink exact to={`/channel/${video.userId}`}>
-                <h1 className={`${indexClass}-item-username`}>{video.username}</h1>
-              </NavLink>
+              <h1 className={`${indexClass}-item-title`}>{video.title}</h1>
+              <h1 className={`${indexClass}-item-username`}>{video.username}</h1>
               <div className={`${indexClass}-other-details`}>
                 <h1 className={`${indexClass}-item-views`}>{video.views} views</h1>
                 <p className='dot'>•</p>
@@ -64,7 +79,7 @@ const VideoIndexItem = ({ video, videoId }) => {
               </div>
             </div>
         </div>
-      </NavLink>
+      </div>
     )
 }
 
