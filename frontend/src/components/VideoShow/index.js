@@ -3,7 +3,7 @@ import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { getVideo } from '../../store/video';
 import VideoInfoHeader from './VideoInfoHeader';
 import VideoJS from "../VideoPlayer/VideoJS";
@@ -12,19 +12,20 @@ import VideoJS from "../VideoPlayer/VideoJS";
 import './VideoShow.css'
 import './VideoJS.css'
 import VideoIndex from '../VideoIndex';
+import { openMiniPlayer } from '../../store/miniPlayer';
 
 const VideoShow = () => {
     const { videoId } = useParams();
     const dispatch = useDispatch()
+    const miniVideoId = useSelector(state => state.ui.mini.videoId);
     const video = useSelector(state => state.entities.videos[videoId])
 
     useEffect(() => {
         dispatch(getVideo(videoId))
     }, [videoId])
 
-    const playerRef = React.useRef(null);
-
     if (!video) return null;
+    if (miniVideoId === parseInt(videoId)) return <Redirect to="/"/>
 
     const videoJsOptions = {
         autoplay: true,
@@ -39,24 +40,15 @@ const VideoShow = () => {
         }]
     };
 
-    const handlePlayerReady = (player) => {
-        playerRef.current = player;
-    
-        // You can handle player events here, for example:
-        player.on('waiting', () => {
-            videojs.log('player is waiting');
-        });
-    
-        player.on('dispose', () => {
-            videojs.log('player will dispose');
-        });
-    };
+    const handleOpenMiniPlayer = () => {
+        dispatch(openMiniPlayer(video.id));
+    }
 
     return (
         <div className='video-whole'>
             <section className='video-show-left'>
               <div className='videojs-container'>
-                <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+                <VideoJS options={videoJsOptions} />
                 <div className='behind-player-background'></div>
               </div>
               <VideoInfoHeader video={video}/>
@@ -64,6 +56,7 @@ const VideoShow = () => {
             <section className='video-show-right'>
               <VideoIndex videoId={video.id}/>
             </section>
+            <button style={{position: 'absolute'}} onClick={handleOpenMiniPlayer}>Open Mini Player</button>
         </div>
     )
 }

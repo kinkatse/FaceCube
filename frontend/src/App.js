@@ -5,40 +5,16 @@ import { Route, Switch } from 'react-router-dom'
 import Modal from './components/Modal';
 import NavBar from './components/NavBar';
 import VideoShow from './components/VideoShow';
-import VideoJS from './components/VideoPlayer/VideoJS'
 import VideoIndex from './components/VideoIndex';
+import MiniPlayer from './components/MiniPlayer';
 
 const App = () => {
-  // const playerRef = React.useRef(null);
-
-  // const videoJsOptions = {
-  //     autoplay: true,
-  //     controls: true,
-  //     responsive: true,
-  //     fluid: true,
-  //     sources: [{
-  //       src: '//vjs.zencdn.net/v/oceans.mp4',
-  //       type: 'video/mp4'
-  //     }]
-  // };
-
-  // const handlePlayerReady = (player) => {
-  //     playerRef.current = player;
-  
-  //     // You can handle player events here, for example:
-  //     player.on('waiting', () => {
-  //       videojs.log('player is waiting');
-  //     });
-  
-  //     player.on('dispose', () => {
-  //       videojs.log('player will dispose');
-  //     });
-  // };
 
   return (
     <>
       <NavBar/>
       <Modal />
+      <MiniPlayer />
       <main id='content'>
         <Switch>
           <Route exact path="/">

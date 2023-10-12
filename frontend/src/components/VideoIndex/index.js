@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideos } from '../../store/video';
+import { clearVideos, getVideos } from '../../store/video';
 import './VideoIndex.css'
 import VideoIndexItem from './VideoIndexItem';
 
@@ -34,7 +34,7 @@ const VideoIndex = ({ videoId }) => {
         Object.values(videos).map((video) => {
             if (videoId !== video.id) {
               videosArr.push(
-                <VideoIndexItem video={video} videoId={videoId}/>
+                <VideoIndexItem video={video} videoId={videoId} key={video.id}/>
               )
             }
         })

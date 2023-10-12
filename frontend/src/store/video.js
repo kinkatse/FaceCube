@@ -22,10 +22,8 @@ const receiveVideos = (videos) => {
   };
 };
 
-const clearVideos = () => {
-  return {
-    type: CLEAR_VIDEOS
-  };
+export const clearVideos = {
+  type: CLEAR_VIDEOS
 };
 
 export const getVideos = async (dispatch) => {
@@ -78,7 +76,7 @@ export const deleteVideo = (videoId) => async (dispatch) => {
     const response = await csrfFetch(`/api/videos/${videoId}`, {
       method: 'DELETE'
     });
-    dispatch(clearVideos());
+    dispatch(clearVideos);
     return response;
 };
 

@@ -8,6 +8,10 @@
     border-bottom: 1px solid rgba(178, 178, 178, 0.5);
 }
 
+.profile-dropdown-user-options h1 {
+    font-size: 14px;
+}
+
 .profile-dropdown-user-options > * {
     display: flex;
     align-items: center;
