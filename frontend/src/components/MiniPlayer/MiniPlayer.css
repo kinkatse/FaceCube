@@ -49,7 +49,9 @@
     animation: fadedarkscreenin 0.3s forwards;
 }
 
-button.mini-buttons-after, .mini-player .video-js .vjs-play-control.mini-buttons-after {
+button.mini-buttons-after,
+.mini-player .video-js .vjs-play-control.mini-buttons-after,
+.mini-player .video-js .vjs-time-control.mini-buttons-after {
     animation: fadeout 0.3s forwards;
 }
 
@@ -109,6 +111,30 @@ button.mini-buttons-after, .mini-player .video-js .vjs-play-control.mini-buttons
 
 .mini-player .video-js .vjs-icon-placeholder {
     transform: translate(0px, -53px);
+}
+
+/* .mini-player .vjs-current-time, .mini-player .vjs-duration, .mini-player .vjs-time-divider { */
+.mini-player .video-js .vjs-time-control {
+    display: none;
+    position: relative;
+    left: -36px;
+    bottom: -4px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+}
+
+/* .mini-player .video-js .vjs-current-time {
+    left: -36px;
+    bottom: -4px;
+} */
+
+.mini-player .video-js .vjs-time-divider {
+    left: -40px;
+    bottom: -7px;
+}
+
+.mini-player .video-js .vjs-duration {
+    left: -44px;
 }
 
 .mini-player .video-js .vjs-mute-control, .mini-player .video-js .vjs-fullscreen-control {

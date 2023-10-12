@@ -1,14 +1,17 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { openMiniPlayer, closeMiniPlayer } from "../../store/miniPlayer";
 import { NavLink, useHistory } from "react-router-dom";
 import './MiniPlayer.css'
 import VideoJS from "../VideoPlayer/VideoJS";
+import { element } from "prop-types";
 
 const MiniPlayer = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const videoId = useSelector(state => state.ui.mini.videoId);
     const video = useSelector(state => state.entities.videos[videoId]);
+    // const [elements, setElements] = useState({})
 
     const handleCloseMini = () => {
       dispatch(closeMiniPlayer());
@@ -20,39 +23,48 @@ const MiniPlayer = () => {
       return;
     }
 
+    const grabElements = () => {
+        const elementObj = {
+            expand: document.querySelector(".mini-expand"),
+            close: document.querySelector(".mini-close"),
+            playButton: document.querySelector(".mini-player .video-js .vjs-play-control"),
+            times: document.querySelectorAll(".mini-player .video-js .vjs-time-control"),
+            background: document.querySelector(".mini-behind-player-background"),
+            remaining: document.querySelector(".mini-player .vjs-remaining-time")
+        }
+        return elementObj;
+    }
+
     const mouseEnterHandler = (e) => {
-        const expand = document.querySelector(".mini-expand");
-        const close = document.querySelector(".mini-close");
-        const playButton = document.querySelector(".mini-player .video-js .vjs-play-control");
-        const background = document.querySelector(".mini-behind-player-background");
-        expand.classList.remove("mini-buttons-after");
-        close.classList.remove("mini-buttons-after");
-        playButton.classList.remove("mini-buttons-after");
-        background.classList.remove("mini-after-hover-away");
-        expand.style.display = "flex";
-        close.style.display = "flex";
-        playButton.style.display = "block";
-        background.style.display = "block";
+        const elements = grabElements();
+        if (elements.remaining) elements.remaining.remove();
+        elements.expand.classList.remove("mini-buttons-after");
+        elements.close.classList.remove("mini-buttons-after");
+        elements.playButton.classList.remove("mini-buttons-after");
+        for (let time of elements.times) time.classList.remove("mini-buttons-after");
+        elements.background.classList.remove("mini-after-hover-away");
+        elements.expand.style.display = "flex";
+        elements.close.style.display = "flex";
+        elements.playButton.style.display = "block";
+        for (let time of elements.times) time.style.display = "block";
+        elements.background.style.display = "block";
     }
 
     const mouseLeaveHandler = (e) => {
-        const expand = document.querySelector(".mini-expand");
-        const close = document.querySelector(".mini-close");
-        const playButton = document.querySelector(".mini-player .video-js .vjs-play-control");
-        const background = document.querySelector(".mini-behind-player-background");
-        expand.classList.add("mini-buttons-after");
-        close.classList.add("mini-buttons-after");
-        playButton.classList.add("mini-buttons-after");
-        background.classList.add("mini-after-hover-away");
+        const elements = grabElements();
+        elements.expand.classList.add("mini-buttons-after");
+        elements.close.classList.add("mini-buttons-after");
+        elements.playButton.classList.add("mini-buttons-after");
+        for (let time of elements.times) time.classList.add("mini-buttons-after");
+        elements.background.classList.add("mini-after-hover-away");
         setTimeout(() => {
-            expand.style.display = "none";
-            close.style.display = "none";
-            playButton.style.display = "none";
-            background.style.display = "none";
+            elements.expand.style.display = "none";
+            elements.close.style.display = "none";
+            elements.playButton.style.display = "none";
+            for (let time of elements.times) time.style.display = "none";
+            elements.background.style.display = "none";
         }, 200)
     }
-
-    if (!videoId) return null;
 
     const videoJsOptions = {
         autoplay: true,
@@ -65,13 +77,15 @@ const MiniPlayer = () => {
         }]
     };
 
+    if (!videoId) return null;
+
     return (
       <div onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler} className="mini-player">
         <div className='videojs-container'>
           <button onClick={handleClickExpand} className="mini-expand">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <i className="fa-solid fa-arrow-up-right-from-square"></i>
           </button>
-          <VideoJS options={videoJsOptions} />
+          <VideoJS options={videoJsOptions} className="grab-video"/>
           <div className='mini-behind-player-background'></div>
           <button onClick={handleCloseMini} className="mini-close">
             <i className="fa-solid fa-xmark"/>
