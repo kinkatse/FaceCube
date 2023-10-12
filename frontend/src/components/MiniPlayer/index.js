@@ -1,17 +1,14 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { openMiniPlayer, closeMiniPlayer } from "../../store/miniPlayer";
-import { NavLink, useHistory } from "react-router-dom";
+import { closeMiniPlayer } from "../../store/miniPlayer";
+import { useHistory } from "react-router-dom";
 import './MiniPlayer.css'
 import VideoJS from "../VideoPlayer/VideoJS";
-import { element } from "prop-types";
 
 const MiniPlayer = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const videoId = useSelector(state => state.ui.mini.videoId);
     const video = useSelector(state => state.entities.videos[videoId]);
-    // const [elements, setElements] = useState({})
 
     const handleCloseMini = () => {
       dispatch(closeMiniPlayer());

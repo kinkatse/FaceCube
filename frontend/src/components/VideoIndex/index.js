@@ -15,7 +15,7 @@ const shuffleArray = (array) => {
     return array
 }
 
-const VideoIndex = ({ videoId }) => {
+const VideoIndex = ({ videoId, setNextVideoId }) => {
     const dispatch = useDispatch()
     // const miniVideoId = useSelector(state => state.ui.mini.videoId);
     const videos = useSelector(state => state.entities.videos)
@@ -26,38 +26,27 @@ const VideoIndex = ({ videoId }) => {
     }, [])
 
     useEffect(() => {
+        const videosObj = Object.values(videos);
         const videosList = [];
-        Object.values(videos).map((video) => {
+        videosObj.map((video) => {
             if (videoId !== video.id) {
                 videosList.push(
                 <VideoIndexItem video={video} videoId={videoId} key={video.id}/>
                 )
             }
         })
-        setVideosArr(shuffleArray(videosList));
+        const shuffled = shuffleArray(videosList)
+        // debugger
+        setNextVideoId && setNextVideoId(shuffled[0]?.key);
+        setVideosArr(shuffled);
     }, [videos])
 
     if (videos.length === 0) return null;
 
     const indexClass = videoId ? 'show' : 'home'
 
-    // const renderVideos = () => {
-    //     const videosList = videosArr;
-    //     Object.values(videos).map((video) => {
-    //         if (videoId !== video.id) {
-    //             videosList.push(
-    //             <VideoIndexItem video={video} videoId={videoId} key={video.id}/>
-    //             )
-    //         }
-    //     })
-    //     setVideosArr(videosList)
-    //     return shuffleArray(videosList);
-    // }
-
     return (
         <div className={`video-${indexClass}-index`}>
-            {/* {!miniVideoId && renderVideos()}
-            {miniVideoId && videosArr} */}
             {videosArr}
         </div>
     )

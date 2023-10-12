@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import { getVideo } from '../../store/video';
 import VideoInfoHeader from './VideoInfoHeader';
 import VideoJS from "../VideoPlayer/VideoJS";
@@ -13,10 +13,12 @@ import VideoIndex from '../VideoIndex';
 import { openMiniPlayer } from '../../store/miniPlayer';
 
 const VideoShow = () => {
+    const [nextVideoId, setNextVideoId] = useState(0);
+    const history = useHistory();
     const { videoId } = useParams();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const miniVideoId = useSelector(state => state.ui.mini.videoId);
-    const video = useSelector(state => state.entities.videos[videoId])
+    const video = useSelector(state => state.entities.videos[videoId]);
 
     useEffect(() => {
         dispatch(getVideo(videoId))
@@ -43,6 +45,12 @@ const VideoShow = () => {
         dispatch(openMiniPlayer(video.id));
     }
 
+    const handlePlayNext = () => {
+        // debugger
+        dispatch(getVideo(nextVideoId));
+        history.push(`/video/${nextVideoId}`)
+    }
+
     return (
         <div className='video-whole'>
             <section className='video-show-left'>
@@ -53,9 +61,10 @@ const VideoShow = () => {
               <VideoInfoHeader video={video}/>
             </section>
             <section className='video-show-right'>
-              <VideoIndex videoId={video.id}/>
+              <VideoIndex videoId={video.id} setNextVideoId={setNextVideoId}/>
             </section>
-            <button style={{position: 'absolute'}} onClick={handleOpenMiniPlayer}>Open Mini Player</button>
+            <button style={{position: 'absolute', left: 0}} onClick={handleOpenMiniPlayer}>Open Mini Player</button>
+            <button style={{position: 'absolute', right: 0}} onClick={handlePlayNext}>Next Video</button>
         </div>
     )
 }
